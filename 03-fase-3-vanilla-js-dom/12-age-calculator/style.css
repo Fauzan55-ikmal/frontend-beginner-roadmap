@@ -1,0 +1,45 @@
+/* 1. RESET SIZING */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. CSS VARIABLES */
+:root {
+  --primary-color: #854d0e;
+  --primary-active: #a16207;
+  --error-color: #ff5757;
+  --bg-main: #f4f4f5;
+  --card-bg: #ffffff;
+  --border-color: #dbdbdb;
+  --text-dark: #141414;
+  --text-muted: #716f6f;
+  --radius: 24px;
+}
+
+/* 3. BASE LAYOUT */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 640px;
+}
+
+.calculator-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  border-bottom-right-radius: 100px; /* Lengkungan khas card kalkulator */
+  padding: 40px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}

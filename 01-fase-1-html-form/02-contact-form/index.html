@@ -24,6 +24,23 @@
             <label for="email">Alamat Email:</label>
             <input type="email" id="email" name="email" placeholder="nama@email.com" required />
           </div>
+
+          <!-- DROPDOWN KATEGORI/SUBJEK -->
+          <div>
+            <label for="subject">Subjek Pesan:</label>
+            <select id="subject" name="subject" required>
+              <option value="">-- Pilih Subjek --</option>
+              <option value="general">Pertanyaan Umum</option>
+              <option value="support">Dukungan Teknis</option>
+              <option value="business">Kerja Sama / Bisnis</option>
+            </select>
+          </div>
+
+          <!-- TEXTAREA PESAN -->
+          <div>
+            <label for="message">Pesan Anda:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tuliskan pesan Anda di sini..." required minlength="10"></textarea>
+          </div>
         </form>
       </section>
     </main>

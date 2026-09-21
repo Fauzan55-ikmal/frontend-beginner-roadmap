@@ -1,4 +1,13 @@
-/* 1. CSS RESET DASAR */
+/* 1. CSS VARIABLES & RESET */
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --text-dark: #0f172a;
+  --text-muted: #475569;
+  --bg-light: #f8fafc;
+  --border-color: #e2e8f0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +15,13 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f8f9fa;
-  color: #333333;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
 }
 
 /* 2. NAVBAR HEADER CONTAINER */

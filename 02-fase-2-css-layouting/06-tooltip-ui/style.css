@@ -148,3 +148,30 @@ body {
 .btn-outline:hover {
   background-color: #f1f5f9;
 }
+
+/* 7. TOOLTIP CORE POSITIONING & PSEUDO-ELEMENTS */
+.tooltip-wrapper {
+  position: relative; /* Menjadi titik acuan (parent context) untuk tooltip absolute */
+  display: inline-block;
+}
+
+/* Kotak Melayang Tooltip */
+.tooltip-wrapper::after {
+  content: attr(data-tooltip); /* Mengambil teks dari atribut data-tooltip di HTML */
+  position: absolute;
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 6px;
+  white-space: nowrap; /* Mencegah teks terlipat ke bawah */
+  z-index: 10;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  pointer-events: none; /* Supaya tooltip tidak menghalangi kursor mouse */
+
+  /* Keadaan Awal (Sembunyi) */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}

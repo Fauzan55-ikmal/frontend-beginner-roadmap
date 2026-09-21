@@ -105,3 +105,37 @@ body {
   font-weight: 600;
   color: var(--text-muted);
 }
+
+/* 7. TIMELINE MARKER & DOTS */
+.timeline-marker {
+  position: absolute;
+  left: -1px;
+  top: 6px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 2px var(--line-color);
+}
+
+/* Variasi Warna Dot */
+.dot-primary {
+  background-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.dot-success {
+  background-color: var(--success-color);
+  box-shadow: 0 0 0 2px var(--success-color);
+}
+
+.dot-secondary {
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px var(--secondary-color);
+}

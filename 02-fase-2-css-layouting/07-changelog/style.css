@@ -83,3 +83,25 @@ body {
   width: 2px;
   background-color: var(--line-color);
 }
+
+/* 6. TIMELINE ITEM LAYOUT */
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Kolom Tanggal (Di sebelah kiri garis vertikal) */
+.timeline-date {
+  position: absolute;
+  left: -120px;
+  top: 2px;
+  width: 100px;
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}

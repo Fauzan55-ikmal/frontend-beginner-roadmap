@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form - HTML Form & Validation</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>Hubungi Kami</h1>
+        <p>Silahkan isi formulir dibawah ini untuk mengirim pesan kepada kami.</p>
+
+        <form action="#" method="POST">
+          <!-- Elemen input bakal kita isi di commit berikutnya -->
+          <!-- INPUT NAMA LENGKAP -->
+          <div>
+            <label for="full-name">Nama Lengkap:</label>
+            <input type="text" id="full-name" name="full_name" placeholder="Contoh: Fauzan Fauzi" required minlength="3" />
+          </div>
+
+          <!-- INPUT EMAIL -->
+          <div>
+            <label for="email">Alamat Email:</label>
+            <input type="email" id="email" name="email" placeholder="nama@email.com" required />
+          </div>
+
+          <!-- DROPDOWN KATEGORI/SUBJEK -->
+          <div>
+            <label for="subject">Subjek Pesan:</label>
+            <select id="subject" name="subject" required>
+              <option value="">-- Pilih Subjek --</option>
+              <option value="general">Pertanyaan Umum</option>
+              <option value="support">Dukungan Teknis</option>
+              <option value="business">Kerja Sama / Bisnis</option>
+            </select>
+          </div>
+
+          <!-- TEXTAREA PESAN -->
+          <div>
+            <label for="message">Pesan Anda:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tuliskan pesan Anda di sini..." required minlength="10"></textarea>
+          </div>
+        </form>
+
+        <!-- CHECKBOX SYARAT & KETENTUAN -->
+        <div>
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms">Saya menyetujui syarat dan ketentuan yang berlaku.</label>
+        </div>
+
+        <!-- TOMBOL SUBMIT -->
+        <div>
+          <button type="submit">Kirim Pesan</button>
+          <button type="reset">Batal</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -62,3 +62,34 @@ body {
   object-fit: cover;
   display: block;
 }
+
+/* 4. HOVER INTERACTION */
+.grid-item img {
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover img {
+  transform: scale(1.05); /* Efek zoom-in halus saat gambar disentuh kursor */
+}
+
+/* 5. RESPONSIVE BREAKPOINTS (MEDIA QUERIES) */
+
+/* Tablet (Maksimal 768px) -> Ubah jadi 2 Kolom */
+@media (max-width: 768px) {
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+/* HP/Mobile (Maksimal 480px) -> Ubah jadi 1 Kolom */
+@media (max-width: 480px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .grid-item {
+    height: 200px; /* Menyesuaikan tinggi bingkai di layar kecil */
+  }
+}

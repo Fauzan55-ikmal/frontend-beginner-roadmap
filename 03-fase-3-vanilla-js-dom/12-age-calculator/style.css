@@ -43,3 +43,182 @@ body {
   padding: 40px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
 }
+
+/* 4. FORM INPUTS & ERROR STATES */
+.inputs-container {
+  display: flex;
+  gap: 16px;
+  max-width: 480px;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.input-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-color);
+}
+
+/* Hilangkan Spinner Angka Bawaan Browser pada Input Number */
+.input-group input::-webkit-outer-spin-button,
+.input-group input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input-group input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Error State saat Validasi Gagal */
+.error-msg {
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--error-color);
+  visibility: hidden;
+}
+
+.input-group.error label {
+  color: var(--error-color);
+}
+
+.input-group.error input {
+  border-color: var(--error-color);
+}
+
+.input-group.error .error-msg {
+  visibility: visible;
+}
+
+/* 5. DIVIDER & SUBMIT BUTTON */
+.divider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 12px 0 24px 0;
+}
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--border-color);
+  position: absolute;
+  z-index: 1;
+}
+
+.submit-btn {
+  position: relative;
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.submit-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-active);
+}
+
+.submit-btn:active {
+  transform: scale(0.95);
+}
+
+/* 6. RESULT DISPLAY STYLING */
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-item {
+  font-size: 3rem;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-item .number {
+  color: var(--primary-color);
+}
+
+.result-item .label {
+  color: var(--text-dark);
+}
+
+/* RESPONSIVE FOR MOBILE */
+@media (max-width: 480px) {
+  .calculator-card {
+    padding: 24px;
+    border-bottom-right-radius: 64px;
+  }
+
+  .inputs-container {
+    gap: 8px;
+  }
+
+  .input-group input {
+    padding: 10px 12px;
+    font-size: 1rem;
+  }
+
+  .divider-container {
+    justify-content: center;
+  }
+
+  .submit-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .submit-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .result-item {
+    font-size: 2.25rem;
+  }
+}

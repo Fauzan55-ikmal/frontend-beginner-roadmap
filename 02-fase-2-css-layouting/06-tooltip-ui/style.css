@@ -13,3 +13,20 @@
   --tooltip-bg: #0f172a;
   --tooltip-text: #ffffff;
 }
+
+/* 3. BASE LAYOUT */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.container {
+  width: 100%;
+  max-width: 680px;
+}

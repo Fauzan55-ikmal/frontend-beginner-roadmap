@@ -66,3 +66,20 @@ body {
   font-size: 0.95rem;
   line-height: 1.5;
 }
+
+/* 5. TIMELINE CONTAINER & VERTICAL LINE */
+.timeline {
+  position: relative;
+  padding-left: 120px; /* Ruang di sebelah kiri untuk kolom tanggal rilis */
+}
+
+/* Garis Konektor Vertikal (Timeline Line) */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 119px; /* Diposisikan pas sejajar dengan titik marker */
+  width: 2px;
+  background-color: var(--line-color);
+}

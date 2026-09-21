@@ -93,3 +93,26 @@ body {
 .nav-link.active {
   color: #2563eb; /* Berubah warna biru saat di-hover atau aktif */
 }
+
+/* 6. CALL TO ACTION (CTA) BUTTON STYLING */
+.btn-primary {
+  display: inline-block;
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease-in-out,
+    transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8; /* Biru sedikit lebih gelap saat hover */
+}
+
+.btn-primary:active {
+  transform: scale(0.98); /* Efek tombol tertekan sedikit saat diklik */
+}

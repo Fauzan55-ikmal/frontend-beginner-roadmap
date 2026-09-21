@@ -12,7 +12,7 @@ Tujuan utama dari repositori ini adalah memperkuat pemahaman fundamental pada we
 
 Fokus pada penggunaan tag semantik, elemen formulir, aksesibilitas dasar, dan struktur dokumen tanpa CSS kompleks.
 
-- [ ] `01-blog-post-page` - Halaman postingan blog dengan tag semantik (`<article>`, `<header>`, `<figure>`).
+- [x] `01-blog-post-page` - Halaman postingan blog dengan tag semantik (`<article>`, `<header>`, `<figure>`).
 - [ ] `02-contact-form` - Formulir kontak dengan validasi bawaan HTML5 dan aksesibilitas elemen form.
 - [ ] `03-pricing-table` - Tabel perbandingan harga menggunakan tag tabel HTML yang terstruktur.
 

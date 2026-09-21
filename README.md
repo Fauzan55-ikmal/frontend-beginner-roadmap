@@ -21,7 +21,7 @@ Fokus pada penggunaan tag semantik, elemen formulir, aksesibilitas dasar, dan st
 Fokus pada tata letak responsif, Flexbox, CSS Grid, serta positioning elemen UI.
 
 - [x] `04-testimonial-cards` - Komponen kartu dengan Flexbox, shadow, dan border-radius.
-- [ ] `05-image-grid` - Galeri gambar responsif menggunakan CSS Grid.
+- [x] `05-image-grid` - Galeri gambar responsif menggunakan CSS Grid, gap, dan object-fit.
 - [ ] `06-tooltip-ui` - Elemen petunjuk (tooltip) dengan CSS Positioning (`absolute`/`relative`).
 - [ ] `07-changelog` - Tampilan timeline vertikal menggunakan penataan spacing dan list styling.
 

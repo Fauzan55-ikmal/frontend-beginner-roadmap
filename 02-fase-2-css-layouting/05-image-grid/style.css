@@ -67,3 +67,29 @@ body {
   color: #2563eb;
   font-weight: 600;
 }
+
+/* 4. BRAND LOGO STYLING */
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #111827;
+  text-decoration: none; /* Menghilangkan garis bawah link */
+}
+
+.logo span {
+  color: #2563eb; /* Warna biru accent untuk titik logo */
+}
+
+/* 5. NAV LINK & HOVER EFFECT */
+.nav-link {
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out; /* Animasi transisi warna halus */
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #2563eb; /* Berubah warna biru saat di-hover atau aktif */
+}

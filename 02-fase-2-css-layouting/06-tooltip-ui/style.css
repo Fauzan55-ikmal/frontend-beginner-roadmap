@@ -1,0 +1,15 @@
+/* 1. RESET SIZING */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. CSS VARIABLES (PALET WARNA) */
+:root {
+  --primary-color: #2563eb;
+  --bg-main: #f8fafc;
+  --text-dark: #0f172a;
+  --tooltip-bg: #0f172a;
+  --tooltip-text: #ffffff;
+}

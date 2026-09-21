@@ -37,3 +37,33 @@ body {
   list-style: none; /* Menghilangkan titik-titik bullet point bawaan <ul> */
   gap: 30px; /* Jarak horizontal antar item menu navigasi */
 }
+
+/* 4. BRAND LOGO STYLING */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111827;
+  text-decoration: none; /* Menghilangkan garis bawah default tag <a> */
+}
+
+.logo span {
+  color: #2563eb; /* Warna aksen biru pada titik logo */
+}
+
+/* 5. NAV LINKS & HOVER EFFECT */
+.nav-link {
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease-in-out; /* Efek perubahan warna yang halus */
+}
+
+.nav-link:hover {
+  color: #2563eb; /* Berubah warna jadi biru saat kursor di atas link */
+}
+
+.nav-link.active {
+  color: #2563eb;
+  font-weight: 600;
+}

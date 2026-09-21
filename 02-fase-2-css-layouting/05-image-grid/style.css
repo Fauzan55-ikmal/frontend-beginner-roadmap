@@ -1,4 +1,10 @@
-/* 1. CSS VARIABLES & RESET */
+/* 1. RESET & VARIABLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --primary-color: #2563eb;
   --primary-hover: #1d4ed8;
@@ -6,12 +12,6 @@
   --text-muted: #475569;
   --bg-light: #f8fafc;
   --border-color: #e2e8f0;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -24,14 +24,14 @@ body {
   color: var(--text-dark);
 }
 
-/* 2. STICKY GLASSMORPHISM NAVBAR */
+/* 2. NAVBAR HEADER CONTAINER */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px); /* Efek kaca transparan (Glassmorphism) */
+  background-color: #ffffff;
   border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05); /* Bayangan halus & bersih */
 }
 
 .nav-container {
@@ -44,7 +44,7 @@ body {
   align-items: center;
 }
 
-/* LOGO STYLING */
+/* 3. LOGO BRAND */
 .logo {
   font-size: 1.35rem;
   font-weight: 800;
@@ -57,109 +57,70 @@ body {
   color: var(--primary-color);
 }
 
-/* NAV LINK & HOVER */
+/* 4. MENU NAVIGASI WITH HOVER UNDERLINE ACCENT */
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+}
+
 .nav-link {
+  position: relative;
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-  transition: all 0.2s ease;
+  padding: 8px 0;
+  transition: color 0.2s ease;
 }
 
-.nav-link:hover,
+/* Animasi garis aksen bergerak di bawah teks menu */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  transition: width 0.25s ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
 .nav-link.active {
   color: var(--primary-color);
   font-weight: 600;
 }
 
-/* 3. FLEXBOX CONTAINER LAYOUT */
-.nav-container {
-  display: flex;
-  justify-content: space-between; /* Mendorong Logo ke kiri, Menu ke tengah, CTA ke kanan */
-  align-items: center; /* Menyejajarkan semua elemen secara vertikal tepat di tengah */
-}
-
-.nav-list {
-  display: flex;
-  list-style: none; /* Menghilangkan titik-titik bullet point bawaan <ul> */
-  gap: 30px; /* Jarak horizontal antar item menu navigasi */
-}
-
-/* 4. BRAND LOGO STYLING */
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #111827;
-  text-decoration: none; /* Menghilangkan garis bawah default tag <a> */
-}
-
-.logo span {
-  color: #2563eb; /* Warna aksen biru pada titik logo */
-}
-
-/* 5. NAV LINKS & HOVER EFFECT */
-.nav-link {
-  text-decoration: none;
-  color: #4b5563;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: color 0.2s ease-in-out; /* Efek perubahan warna yang halus */
-}
-
-.nav-link:hover {
-  color: #2563eb; /* Berubah warna jadi biru saat kursor di atas link */
-}
-
-.nav-link.active {
-  color: #2563eb;
-  font-weight: 600;
-}
-
-/* 4. BRAND LOGO STYLING */
-.logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #111827;
-  text-decoration: none; /* Menghilangkan garis bawah link */
-}
-
-.logo span {
-  color: #2563eb; /* Warna biru accent untuk titik logo */
-}
-
-/* 5. NAV LINK & HOVER EFFECT */
-.nav-link {
-  color: #4b5563;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: color 0.2s ease-in-out; /* Animasi transisi warna halus */
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: #2563eb; /* Berubah warna biru saat di-hover atau aktif */
-}
-
-/* 6. CALL TO ACTION (CTA) BUTTON STYLING */
+/* 5. TOMBOL CTA PRO WITH GLOW */
 .btn-primary {
   display: inline-block;
-  background-color: #2563eb;
+  background-color: var(--primary-color);
   color: #ffffff;
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  padding: 10px 22px;
+  border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 600;
-  transition:
-    background-color 0.2s ease-in-out,
-    transform 0.1s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); /* Glow shadow halus di tombol */
+  transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
-  background-color: #1d4ed8; /* Biru sedikit lebih gelap saat hover */
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
 }
 
 .btn-primary:active {
-  transform: scale(0.98); /* Efek tombol tertekan sedikit saat diklik */
+  transform: translateY(0);
 }

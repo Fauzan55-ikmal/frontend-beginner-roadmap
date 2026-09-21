@@ -3,38 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navigation Bar - CSS Flexbox Header</title>
+    <title>Image Grid Layout - CSS Grid</title>
 
     <!-- Google Font Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
-    <!-- External Stylesheet -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- HEADER UTAMA HALAMAN -->
-    <header class="navbar">
-      <div class="nav-container">
-        <!-- 1. LOGO BRAND -->
-        <a href="#" class="logo">DevPortfolio<span>.</span></a>
+    <div class="container">
+      <header class="header">
+        <h1>Galeri Foto CSS Grid</h1>
+        <p>Implementasi grid-template-columns, gap, dan object-fit responsif.</p>
+      </header>
 
-        <!-- 2. MENU NAVIGASI -->
-        <nav class="nav-menu">
-          <ul class="nav-list">
-            <li><a href="#" class="nav-link active">Beranda</a></li>
-            <li><a href="#" class="nav-link">Proyek</a></li>
-            <li><a href="#" class="nav-link">Layanan</a></li>
-            <li><a href="#" class="nav-link">Tentang</a></li>
-          </ul>
-        </nav>
-
-        <!-- 3. TOMBOL CALL TO ACTION -->
-        <div class="nav-actions">
-          <a href="#" class="btn-primary">Kontak Kami</a>
+      <!-- KONTEN GRID UTAMA -->
+      <main class="image-grid">
+        <div class="grid-item">
+          <img src="https://picsum.photos/id/1015/600/400" alt="Pemandangan Alam 1" />
         </div>
-      </div>
-    </header>
+        <div class="grid-item">
+          <img src="https://picsum.photos/id/1018/600/400" alt="Pemandangan Alam 2" />
+        </div>
+        <div class="grid-item">
+          <img src="https://picsum.photos/id/1025/600/400" alt="Pemandangan Alam 3" />
+        </div>
+        <div class="grid-item">
+          <img src="https://picsum.photos/id/1039/600/400" alt="Pemandangan Alam 4" />
+        </div>
+        <div class="grid-item">
+          <img src="https://picsum.photos/id/1043/600/400" alt="Pemandangan Alam 5" />
+        </div>
+        <div class="grid-item">
+          <img src="https://picsum.photos/id/1050/600/400" alt="Pemandangan Alam 6" />
+        </div>
+      </main>
+    </div>
   </body>
 </html>

@@ -57,3 +57,71 @@ body {
   line-height: 1.5;
   margin-bottom: 24px;
 }
+
+/* 5. ACCORDION ITEM & HEADER STYLING */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.accordion-item {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.accordion-item.active {
+  border-color: var(--primary-color);
+  background-color: var(--primary-light);
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-header .title {
+  padding-right: 12px;
+}
+
+/* Styling Ikon SVG & Rotasi */
+.accordion-header .icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.active .icon {
+  transform: rotate(180deg);
+  color: var(--primary-color);
+}
+
+/* 6. ACCORDION CONTENT & ANIMATION AREA */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-body {
+  padding: 0 20px 16px 20px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}

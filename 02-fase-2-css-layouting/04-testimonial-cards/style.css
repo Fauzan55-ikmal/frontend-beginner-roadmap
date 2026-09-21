@@ -1,0 +1,26 @@
+/* 1. CSS RESET DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. BASE TYPOGRAPHY & BACKGROUND */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f9;
+  color: #333333;
+  padding: 40px 20px;
+}
+
+/* 3. LAYOUT CONTAINER */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1a1a1a;
+}

@@ -14,6 +14,62 @@
   </head>
   <body>
     <!-- Area kalkulator umur akan kita isi di langkah berikutnya -->
+    <main class="container">
+      <div class="calculator-card">
+        <!-- Form Input Tanggal -->
+        <form id="age-form" novalidate>
+          <div class="inputs-container">
+            <!-- Input Hari -->
+            <div class="input-group" id="group-day">
+              <label for="day-input">HARI</label>
+              <input type="number" id="day-input" placeholder="DD" min="1" max="31" required />
+              <small class="error-msg">Harus diisi</small>
+            </div>
+
+            <!-- Input Bulan -->
+            <div class="input-group" id="group-month">
+              <label for="month-input">BULAN</label>
+              <input type="number" id="month-input" placeholder="MM" min="1" max="12" required />
+              <small class="error-msg">Harus diisi</small>
+            </div>
+
+            <!-- Input Tahun -->
+            <div class="input-group" id="group-year">
+              <label for="year-input">TAHUN</label>
+              <input type="number" id="year-input" placeholder="YYYY" min="1900" max="2026" required />
+              <small class="error-msg">Harus diisi</small>
+            </div>
+          </div>
+
+          <!-- Pembatas & Tombol Submit -->
+          <div class="divider-container">
+            <hr class="divider" />
+            <button type="submit" class="submit-btn" aria-label="Hitung Umur">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <!-- Output Hasil Kalkulasi -->
+        <div class="results-container">
+          <div class="result-item">
+            <span id="result-years" class="number">--</span>
+            <span class="label">tahun</span>
+          </div>
+          <div class="result-item">
+            <span id="result-months" class="number">--</span>
+            <span class="label">bulan</span>
+          </div>
+          <div class="result-item">
+            <span id="result-days" class="number">--</span>
+            <span class="label">hari</span>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <!-- JavaScript di-load dengan defer agar DOM terurai penuh dulu -->
     <script src="script.js" defer></script>

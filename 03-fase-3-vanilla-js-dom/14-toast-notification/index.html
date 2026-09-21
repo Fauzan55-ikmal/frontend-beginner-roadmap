@@ -14,6 +14,31 @@
   </head>
   <body>
     <!-- Area Toast Notification akan kita isi di langkah berikutnya -->
+    <main class="container">
+      <div class="card">
+        <h2>Toast Notification Demo</h2>
+        <p class="subtitle">Klik tombol di bawah untuk memicu munculnya notifikasi dinamis secara real-time.</p>
+
+        <!-- Grid Tombol Pemicu -->
+        <div class="buttons-grid">
+          <button class="btn btn-success" data-type="success">
+            <span>Sukses</span>
+          </button>
+          <button class="btn btn-error" data-type="error">
+            <span>Gagal / Error</span>
+          </button>
+          <button class="btn btn-info" data-type="info">
+            <span>Informasi</span>
+          </button>
+          <button class="btn btn-warning" data-type="warning">
+            <span>Peringatan</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Container Utama Penampung Toast (Floating di Kanan Atas) -->
+    <div id="toast-container" class="toast-container"></div>
 
     <!-- JavaScript di-load dengan defer agar DOM terurai penuh dulu -->
     <script src="script.js" defer></script>

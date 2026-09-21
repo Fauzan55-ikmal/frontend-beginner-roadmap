@@ -18,3 +18,19 @@
   --text-dark: #0f172a;
   --text-muted: #64748b;
 }
+
+/* 3. BASE LAYOUT */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding: 48px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+}

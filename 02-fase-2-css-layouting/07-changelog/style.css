@@ -139,3 +139,80 @@ body {
   background-color: var(--secondary-color);
   box-shadow: 0 0 0 2px var(--secondary-color);
 }
+
+/* 8. TIMELINE CONTENT CARD & TYPOGRAPHY */
+.timeline-content {
+  background-color: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.version-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.version-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Tag Badge Variasi */
+.tag {
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.tag-primary {
+  background-color: var(--primary-bg);
+  color: var(--primary-color);
+}
+
+.tag-success {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+}
+
+.tag-secondary {
+  background-color: var(--secondary-bg);
+  color: var(--secondary-color);
+}
+
+.description {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+/* List Poin Perubahan */
+.change-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.change-list li {
+  font-size: 0.875rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 18px;
+}
+
+/* Bullet Custom Menggunakan ::before */
+.change-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}

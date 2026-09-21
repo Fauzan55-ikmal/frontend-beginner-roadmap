@@ -175,3 +175,26 @@ body {
   visibility: hidden;
   transition: all 0.2s ease-in-out;
 }
+
+/* Panah Kecil (Caret) Tooltip */
+.tooltip-wrapper::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  z-index: 10;
+  pointer-events: none;
+
+  /* Keadaan Awal (Sembunyi) */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Micro-Interaction: Muncul saat Hover & Focus-Within */
+.tooltip-wrapper:hover::after,
+.tooltip-wrapper:hover::before,
+.tooltip-wrapper:focus-within::after,
+.tooltip-wrapper:focus-within::before {
+  opacity: 1;
+  visibility: visible;
+}

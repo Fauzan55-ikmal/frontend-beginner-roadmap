@@ -1,0 +1,20 @@
+/* 1. RESET SIZING */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. CSS VARIABLES (PALET WARNA & SPACING) */
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-main: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #cbd5e1;
+  --border-focus: #2563eb;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --danger-color: #dc2626;
+  --warning-color: #d97706;
+}

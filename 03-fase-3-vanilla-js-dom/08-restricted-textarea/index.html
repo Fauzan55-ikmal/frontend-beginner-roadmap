@@ -13,6 +13,28 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <main class="container">
+      <div class="card">
+        <header class="card-header">
+          <h2>Ulasan Produk</h2>
+          <p>Bagikan pendapatmu mengenai produk ini (maksimal 200 karakter).</p>
+        </header>
+
+        <form class="feedback-form" id="feedbackForm">
+          <div class="input-group">
+            <label for="message">Pesan / Ulasan</label>
+            <textarea id="message" name="message" placeholder="Tulis ulasanmu di sini..." maxlength="200" rows="5"></textarea>
+
+            <div class="counter-wrapper">
+              <span id="charCount" class="counter">0 / 200 karakter</span>
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn">Kirim Ulasan</button>
+        </form>
+      </div>
+    </main>
+
     <!-- JavaScript di-load menggunakan defer agar DOM terurai penuh dulu -->
     <script src="script.js" defer></script>
   </body>

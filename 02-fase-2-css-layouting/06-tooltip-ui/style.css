@@ -198,3 +198,63 @@ body {
   opacity: 1;
   visibility: visible;
 }
+
+/* 8. POSISI 4 ARAH TOOLTIP */
+
+/* A. TOOLTIP ATAS (DEFAULT / TOOLTIP-TOP) */
+.tooltip-top::after,
+.tooltip-wrapper:not([class*="tooltip-"])::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+}
+.tooltip-top::before,
+.tooltip-wrapper:not([class*="tooltip-"])::before {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-2px);
+  border-width: 6px 6px 0 6px;
+  border-color: var(--tooltip-bg) transparent transparent transparent;
+}
+
+/* B. TOOLTIP BAWAH (TOOLTIP-BOTTOM) */
+.tooltip-bottom::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+}
+.tooltip-bottom::before {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(2px);
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent var(--tooltip-bg) transparent;
+}
+
+/* C. TOOLTIP KIRI (TOOLTIP-LEFT) */
+.tooltip-left::after {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+}
+.tooltip-left::before {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-2px);
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent var(--tooltip-bg);
+}
+
+/* D. TOOLTIP KANAN (TOOLTIP-RIGHT) */
+.tooltip-right::after {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+}
+.tooltip-right::before {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(2px);
+  border-width: 6px 6px 6px 0;
+  border-color: transparent var(--tooltip-bg) transparent transparent;
+}

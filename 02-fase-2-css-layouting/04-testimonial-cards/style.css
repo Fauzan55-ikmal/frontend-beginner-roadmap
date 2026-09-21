@@ -24,3 +24,11 @@ body {
   margin-bottom: 30px;
   color: #1a1a1a;
 }
+
+/* 4. FLEXBOX CONTAINER */
+.testimonial-grid {
+  display: flex;
+  flex-wrap: wrap; /* Agar kartu otomatis turun ke bawah jika layar HP sempit */
+  gap: 20px; /* Jarak antar kartu */
+  justify-content: center; /* Memposisikan kartu di tengah jika ada ruang sisa */
+}

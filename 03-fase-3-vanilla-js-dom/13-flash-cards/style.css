@@ -1,0 +1,65 @@
+/* 1. RESET SIZING */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. CSS VARIABLES */
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --accent-color: #f59e0b;
+  --bg-main: #f1f5f9;
+  --card-bg: #ffffff;
+  --card-back-bg: #1e293b;
+  --border-color: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-light: #f8fafc;
+  --text-muted: #64748b;
+  --radius: 16px;
+}
+
+/* 3. BASE LAYOUT */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 540px;
+}
+
+.flashcard-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* HEADER & PROGRESS BADGE */
+.flashcard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flashcard-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.progress-badge {
+  background-color: #e2e8f0;
+  color: var(--text-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+}

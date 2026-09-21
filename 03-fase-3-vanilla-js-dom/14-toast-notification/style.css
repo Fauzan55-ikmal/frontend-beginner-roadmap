@@ -164,3 +164,34 @@ body {
 .toast-close:hover {
   color: var(--text-dark);
 }
+
+/* 6. ANIMASI KEYFRAMES & HIDING CLASS */
+.toast {
+  animation: slideIn 0.3s ease forwards;
+}
+
+.toast.hiding {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}

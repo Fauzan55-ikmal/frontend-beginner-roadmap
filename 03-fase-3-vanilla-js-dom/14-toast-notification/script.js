@@ -19,3 +19,18 @@ function showToast(type, message) {
   // C. Tempelkan toast ke dalam container
   toastContainer.appendChild(toast);
 }
+
+// D. Fungsi internal untuk menghapus toast dengan animasi fadeOut
+const removeToast = () => {
+  toast.classList.add("hiding");
+  toast.addEventListener("animationend", () => {
+    toast.remove();
+  });
+};
+
+// E. Event listener untuk tombol close (silang)
+const closeBtn = toast.querySelector(".toast-close");
+closeBtn.addEventListener("click", removeToast);
+
+// F. Hapus otomatis setelah 4 detik (4000ms)
+setTimeout(removeToast, 4000);

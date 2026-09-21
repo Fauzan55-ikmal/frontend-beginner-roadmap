@@ -14,6 +14,55 @@
   </head>
   <body>
     <!-- Area Flash Cards akan kita isi di langkah berikutnya -->
+    <main class="container">
+      <div class="flashcard-wrapper">
+        <!-- Header & Indikator Progres -->
+        <header class="flashcard-header">
+          <h2>Flash Cards Belajar</h2>
+          <span id="progress-indicator" class="progress-badge">1 / 5</span>
+        </header>
+
+        <!-- Container Kartu 3D Flip -->
+        <div class="card-scene">
+          <div id="flashcard" class="card">
+            <!-- Sisi Depan (Pertanyaan) -->
+            <div class="card-face card-front">
+              <span class="card-label">PERTANYAAN</span>
+              <p id="card-question" class="card-text">Memuat pertanyaan...</p>
+              <span class="hint-text">Klik kartu untuk melihat jawaban 🔄</span>
+            </div>
+
+            <!-- Sisi Belakang (Jawaban) -->
+            <div class="card-face card-back">
+              <span class="card-label">JAWABAN</span>
+              <p id="card-answer" class="card-text">Memuat jawaban...</p>
+              <span class="hint-text">Klik kartu untuk kembali ke pertanyaan 🔄</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kontrol Navigasi -->
+        <footer class="controls-container">
+          <button id="prev-btn" class="btn btn-nav" aria-label="Kartu Sebelumnya">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Sebelumnya</span>
+          </button>
+
+          <button id="flip-btn" class="btn btn-flip">Balik Kartu 🔄</button>
+
+          <button id="next-btn" class="btn btn-nav" aria-label="Kartu Selanjutnya">
+            <span>Selanjutnya</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </footer>
+      </div>
+    </main>
 
     <!-- JavaScript di-load dengan defer agar DOM terurai penuh dulu -->
     <script src="script.js" defer></script>

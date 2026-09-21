@@ -34,6 +34,7 @@ Fokus pada logika JavaScript murni, event listener, serta manipulasi elemen DOM.
 - [x] **10-accordion** - Komponen FAQ accordion interaktif dengan animasi rotasi ikon dan kalkulasi scrollHeight dinamis.
 - [x] **11-cookie-consent** - Banner persetujuan cookie interaktif yang mengontrol visibilitas pop-up menggunakan Web Storage API (`localStorage`).
 - [x] **12-age-calculator** - Kalkulator umur presisi dengan manipulasi objek Date(), validasi tanggal lahir, dan animasi hitung angka.
+- [x] **13-flash-cards** - Aplikasi kartu belajar interaktif dengan animasi rotasi 3D CSS, navigasi array data, indikator progres, dan shortcut keyboard.
 
 ---
 

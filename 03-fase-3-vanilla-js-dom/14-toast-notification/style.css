@@ -4,3 +4,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* 2. CSS VARIABLES */
+:root {
+  --bg-main: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+
+  /* Status Colors */
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --info-color: #3b82f6;
+  --warning-color: #f59e0b;
+
+  --radius: 12px;
+}

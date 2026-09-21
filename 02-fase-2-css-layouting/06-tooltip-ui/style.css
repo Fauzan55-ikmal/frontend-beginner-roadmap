@@ -258,3 +258,23 @@ body {
   border-width: 6px 6px 6px 0;
   border-color: transparent var(--tooltip-bg) transparent transparent;
 }
+
+/* 9. RESPONSIVE MEDIA QUERIES (MOBILE) */
+@media (max-width: 640px) {
+  body {
+    padding: 16px;
+  }
+
+  .card {
+    padding: 24px 16px;
+  }
+
+  .action-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

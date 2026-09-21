@@ -103,3 +103,48 @@ body {
   justify-items: center;
   align-items: center;
 }
+
+/* 6. BUTTON STYLES & VARIANTS */
+.btn {
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.btn-secondary {
+  background-color: #475569;
+  color: #ffffff;
+}
+.btn-secondary:hover {
+  background-color: #334155;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+.btn-outline:hover {
+  background-color: #f1f5f9;
+}

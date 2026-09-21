@@ -34,3 +34,17 @@ closeBtn.addEventListener("click", removeToast);
 
 // F. Hapus otomatis setelah 4 detik (4000ms)
 setTimeout(removeToast, 4000);
+
+// 3. EVENT LISTENER UNTUK SEMUA TOMBOL PEMICU
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    // A. Ambil tipe dari data-attribute (success, error, info, warning)
+    const type = button.dataset.type;
+
+    // B. Buat pesan sesuai tipe
+    const message = `Ini adalah notifikasi ${type.toUpperCase()}!`;
+
+    // C. Panggil fungsi utama pembuat toast
+    showToast(type, message);
+  });
+});

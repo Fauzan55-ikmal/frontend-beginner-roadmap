@@ -22,7 +22,7 @@ Fokus pada tata letak responsif, Flexbox, CSS Grid, serta positioning elemen UI.
 
 - [x] `04-testimonial-cards` - Komponen kartu dengan Flexbox, shadow, dan border-radius.
 - [x] `05-image-grid` - Galeri gambar responsif menggunakan CSS Grid, gap, dan object-fit.
-- [ ] `06-tooltip-ui` - Elemen petunjuk (tooltip) dengan CSS Positioning (`absolute`/`relative`).
+- [x] **06-tooltip-ui** - Tooltip UI Component 4 Arah (`position: relative/absolute`, Pseudo-elements `::before`/`::after`, Fallback Responsif Mobile)
 - [ ] `07-changelog` - Tampilan timeline vertikal menggunakan penataan spacing dan list styling.
 
 ### 03. Fase 3: Logika Vanilla JavaScript & Manipulasi DOM

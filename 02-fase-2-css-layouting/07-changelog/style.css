@@ -1,0 +1,20 @@
+/* 1. RESET SIZING */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. CSS VARIABLES (PALET WARNA & SPACING) */
+:root {
+  --primary-color: #2563eb;
+  --primary-bg: #dbeafe;
+  --success-color: #059669;
+  --success-bg: #d1fae5;
+  --secondary-color: #475569;
+  --secondary-bg: #f1f5f9;
+  --line-color: #e2e8f0;
+  --bg-main: #f8fafc;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+}

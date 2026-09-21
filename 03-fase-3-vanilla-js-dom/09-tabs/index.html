@@ -13,6 +13,44 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <main class="container">
+      <div class="card">
+        <!-- Header Kartu -->
+        <header class="card-header">
+          <h2>Pengaturan Akun</h2>
+          <p>Kelola profil, keamanan, dan preferensi notifikasi kamu.</p>
+        </header>
+
+        <!-- Navigasi Tombol Tab -->
+        <nav class="tabs-nav">
+          <button class="tab-btn active" data-tab="profile">Profil</button>
+          <button class="tab-btn" data-tab="security">Keamanan</button>
+          <button class="tab-btn" data-tab="notifications">Notifikasi</button>
+        </nav>
+
+        <!-- Area Panel Konten -->
+        <div class="tabs-content">
+          <!-- Panel 1: Profil -->
+          <div class="tab-panel active" id="profile">
+            <h3>Data Profil</h3>
+            <p>Ubah nama, foto profil, dan informasi biodata umum kamu di sini.</p>
+          </div>
+
+          <!-- Panel 2: Keamanan -->
+          <div class="tab-panel" id="security">
+            <h3>Pengaturan Keamanan</h3>
+            <p>Perbarui kata sandi, aktifkan autentikasi dua faktor (2FA), dan tinjau sesi login.</p>
+          </div>
+
+          <!-- Panel 3: Notifikasi -->
+          <div class="tab-panel" id="notifications">
+            <h3>Preferensi Notifikasi</h3>
+            <p>Atur jenis email, SMS, dan notifikasi aplikasi yang ingin kamu terima.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <!-- JavaScript di-load dengan defer agar DOM terurai penuh dulu -->
     <script src="script.js" defer></script>
   </body>

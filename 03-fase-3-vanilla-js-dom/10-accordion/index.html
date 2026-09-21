@@ -14,6 +14,31 @@
   </head>
   <body>
     <!-- Area konten utama akan kita isi di langkah berikutnya -->
+    <main class="container">
+      <div class="card">
+        <!-- Header Kartu -->
+        <header class="card-header">
+          <h2>Pertanyaan Umum (FAQ)</h2>
+          <p>Temukan jawaban untuk pertanyaan yang sering ditanyakan di bawah ini.</p>
+        </header>
+
+        <!-- Container Accordion -->
+        <div class="accordion">
+          <!-- Item FAQ 1 (Default Terbuka) -->
+          <div class="accordion-item active">
+            <button class="accordion-header">
+              <span class="title">Apa itu roadmap frontend ini?</span>
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">Roadmap ini dirancang untuk memandu pembelajaran frontend secara bertahap mulai dari HTML dasar, CSS layouting, hingga manipulasi DOM menggunakan Vanilla JavaScript murni tanpa framework.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <!-- JavaScript di-load dengan defer agar DOM terurai penuh dulu -->
     <script src="script.js" defer></script>

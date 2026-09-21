@@ -59,3 +59,97 @@ body {
   line-height: 1.5;
   margin-bottom: 24px;
 }
+
+/* 5. FORM & TEXTAREA STYLING */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background-color: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  resize: vertical;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* 6. CHARACTER COUNTER STYLING */
+.counter-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.counter {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+/* 7. DYNAMIC WARNING & LIMIT CLASSES (DITRIGGER JS) */
+textarea.warning {
+  border-color: var(--warning-color);
+}
+
+textarea.warning:focus {
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+}
+
+.counter.warning {
+  color: var(--warning-color);
+  font-weight: 600;
+}
+
+textarea.limit-reached {
+  border-color: var(--danger-color);
+}
+
+textarea.limit-reached:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.counter.limit-reached {
+  color: var(--danger-color);
+  font-weight: 700;
+}
+
+/* 8. BUTTON STYLING */
+.btn {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+}

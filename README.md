@@ -30,7 +30,7 @@ Fokus pada tata letak responsif, Flexbox, CSS Grid, serta positioning elemen UI.
 Fokus pada logika JavaScript murni, event listener, serta manipulasi elemen DOM.
 
 - [x] **08-restricted-textarea** - Restricted Textarea (Event Listener `input`, Real-time Character Counter, Dynamic State Classes)
-- [ ] `09-tabs` - Komponen tab interaktif dengan penambahan/pengurangan kelas CSS via JS.
+- [x] **09-tabs** - Komponen tab interaktif dengan penambahan/pengurangan kelas CSS via JS.
 - [ ] `10-accordion` - Komponen FAQ buka-tutup interaktif.
 - [ ] `11-cookie-consent` - Banner persetujuan cookie yang menyimpan status di `localStorage`.
 - [ ] `12-age-calculator` - Kalkulator umur menggunakan pengolahan objek `Date`.

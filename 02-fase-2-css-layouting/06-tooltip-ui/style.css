@@ -259,22 +259,71 @@ body {
   border-color: transparent var(--tooltip-bg) transparent transparent;
 }
 
+/* Helper agar teks tag code tidak patah di mobile */
+.no-wrap {
+  white-space: nowrap;
+}
+
 /* 9. RESPONSIVE MEDIA QUERIES (MOBILE) */
 @media (max-width: 640px) {
   body {
-    padding: 16px;
+    align-items: flex-start; /* Agar di HP tidak terlalu ketarik ke tengah vertikal */
+    padding: 40px 16px;
+  }
+
+  .header {
+    margin-bottom: 24px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  .header p {
+    font-size: 0.85rem;
+    line-height: 1.6;
   }
 
   .card {
     padding: 24px 16px;
   }
 
+  .card-header {
+    margin-bottom: 28px;
+  }
+
   .action-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 24px;
+  }
+
+  .tooltip-wrapper {
+    width: 100%;
+    display: block;
   }
 
   .btn {
     width: 100%;
+  }
+
+  /* Paksa tooltip kiri & kanan di mobile agar berubah jadi tooltip atas agar tidak terpotong keluar layar */
+  .tooltip-left::after,
+  .tooltip-right::after {
+    top: auto;
+    bottom: 100%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) translateY(-8px);
+  }
+
+  .tooltip-left::before,
+  .tooltip-right::before {
+    top: auto;
+    bottom: 100%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) translateY(-2px);
+    border-width: 6px 6px 0 6px;
+    border-color: var(--tooltip-bg) transparent transparent transparent;
   }
 }

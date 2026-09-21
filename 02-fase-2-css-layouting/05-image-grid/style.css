@@ -24,3 +24,16 @@ body {
   padding: 0 20px;
   height: 70px;
 }
+
+/* 3. FLEXBOX CONTAINER LAYOUT */
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* Mendorong Logo ke kiri, Menu ke tengah, CTA ke kanan */
+  align-items: center; /* Menyejajarkan semua elemen secara vertikal tepat di tengah */
+}
+
+.nav-list {
+  display: flex;
+  list-style: none; /* Menghilangkan titik-titik bullet point bawaan <ul> */
+  gap: 30px; /* Jarak horizontal antar item menu navigasi */
+}

@@ -14,6 +14,36 @@
   </head>
   <body>
     <!-- Area konten halaman utama & cookie banner akan kita isi di langkah berikutnya -->
+    <!-- Halaman Utama Dummy -->
+    <main class="container">
+      <div class="demo-card">
+        <h1>Selamat Datang di Portal Kami</h1>
+        <p>Ini adalah halaman latar belakang untuk menguji interaksi banner Cookie Consent. Coba klik Setuju/Tolak, lalu refresh halaman browser kamu!</p>
+
+        <!-- Tombol khusus untuk reset localStorage saat testing -->
+        <div class="status-box">
+          <p>Status Cookie saat ini: <strong id="cookie-status">Belum Ditentukan</strong></p>
+          <button id="reset-btn" class="btn btn-reset">Reset Cookie State</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Banner Pop-Up Cookie Consent (Bawah Layar) -->
+    <div id="cookie-banner" class="cookie-banner">
+      <div class="cookie-content">
+        <div class="cookie-text">
+          <span class="cookie-icon">🍪</span>
+          <div>
+            <h3>Kami Menggunakan Cookie</h3>
+            <p>Kami menggunakan cookie untuk meningkatkan pengalaman penelusuran kamu dan menganalisis lalu lintas situs kami.</p>
+          </div>
+        </div>
+        <div class="cookie-actions">
+          <button id="decline-btn" class="btn btn-outline">Tolak</button>
+          <button id="accept-btn" class="btn btn-primary">Setuju Semua</button>
+        </div>
+      </div>
+    </div>
 
     <!-- JavaScript di-load dengan defer agar DOM terurai penuh dulu -->
     <script src="script.js" defer></script>

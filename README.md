@@ -31,7 +31,7 @@ Fokus pada logika JavaScript murni, event listener, serta manipulasi elemen DOM.
 
 - [x] **08-restricted-textarea** - Restricted Textarea (Event Listener `input`, Real-time Character Counter, Dynamic State Classes)
 - [x] **09-tabs** - Komponen tab interaktif dengan penambahan/pengurangan kelas CSS via JS.
-- [ ] `10-accordion` - Komponen FAQ buka-tutup interaktif.
+- [x] **10-accordion** - Komponen FAQ accordion interaktif dengan animasi rotasi ikon dan kalkulasi scrollHeight dinamis.
 - [ ] `11-cookie-consent` - Banner persetujuan cookie yang menyimpan status di `localStorage`.
 - [ ] `12-age-calculator` - Kalkulator umur menggunakan pengolahan objek `Date`.
 

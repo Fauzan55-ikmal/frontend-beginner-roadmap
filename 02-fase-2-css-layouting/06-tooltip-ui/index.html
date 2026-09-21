@@ -20,10 +20,33 @@
         <p>Eksplorasi CSS Positioning dengan <code>position: relative</code> dan <code>position: absolute</code>.</p>
       </header>
 
-      <!-- KONTEN DEMO TOOLTIP -->
-      <section class="demo-area">
-        <div class="tooltip-wrapper" data-tooltip="Simpan perubahan profil Anda">
-          <button class="btn">Simpan Profil</button>
+      <!-- KARTU DEMO DENGAN VARIASI 4 ARAH -->
+      <section class="card">
+        <div class="card-header">
+          <h2>Aksi Akun & Pengaturan</h2>
+          <p>Arahkan kursor (*hover*) atau navigasi keyboard (*Tab*) pada tombol di bawah.</p>
+        </div>
+
+        <div class="action-grid">
+          <!-- 1. TOOLTIP ATAS (DEFAULT) -->
+          <div class="tooltip-wrapper tooltip-top" data-tooltip="Simpan perubahan profil Anda">
+            <button class="btn btn-primary">Simpan Profil</button>
+          </div>
+
+          <!-- 2. TOOLTIP BAWAH -->
+          <div class="tooltip-wrapper tooltip-bottom" data-tooltip="Tindakan ini tidak dapat dibatalkan!">
+            <button class="btn btn-danger">Hapus Akun</button>
+          </div>
+
+          <!-- 3. TOOLTIP KIRI -->
+          <div class="tooltip-wrapper tooltip-left" data-tooltip="Salin link portofolio ke clipboard">
+            <button class="btn btn-secondary">Bagikan Link</button>
+          </div>
+
+          <!-- 4. TOOLTIP KANAN -->
+          <div class="tooltip-wrapper tooltip-right" data-tooltip="Pelajari dokumentasi CSS positioning">
+            <button class="btn btn-outline">Dokumentasi</button>
+          </div>
         </div>
       </section>
     </main>

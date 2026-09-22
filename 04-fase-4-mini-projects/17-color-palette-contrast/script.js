@@ -126,3 +126,46 @@ function formatColorValue(hex, format) {
   }
   return hex.toUpperCase();
 }
+
+// 4. PALETTE GENERATOR & UI RENDER ENGINE
+/**
+ * Memperbarui nilai warna acak baru untuk kartu yang tidak terkunci
+ */
+function generateNewPalette() {
+  state.colors = state.colors.map((colorObj) => {
+    if (colorObj.locked) return colorObj;
+    return {
+      ...colorObj,
+      hex: getRandomHex(),
+    };
+  });
+  renderPaletteUI();
+}
+
+/**
+ * Merekam state ke tampilan DOM (kartu warna, background, teks kode, dan status gembok)
+ */
+function renderPaletteUI() {
+  colorCards.forEach((card, index) => {
+    const colorData = state.colors[index];
+    const previewEl = card.querySelector(".color-preview");
+    const codeEl = card.querySelector(".color-code");
+    const lockBtn = card.querySelector(".btn-lock");
+    const lockIcon = card.querySelector(".lock-icon");
+
+    // Update background preview & kode warna berdasarkan format aktif
+    previewEl.style.backgroundColor = colorData.hex;
+    codeEl.textContent = formatColorValue(colorData.hex, state.format);
+
+    // Update status UI gembok (Lock state)
+    if (colorData.locked) {
+      lockBtn.classList.add("is-locked");
+      lockIcon.textContent = "🔒";
+      lockBtn.setAttribute("title", "Buka Kunci Warna");
+    } else {
+      lockBtn.classList.remove("is-locked");
+      lockIcon.textContent = "🔓";
+      lockBtn.setAttribute("title", "Kunci Warna");
+    }
+  });
+}

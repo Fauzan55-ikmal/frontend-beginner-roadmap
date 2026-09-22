@@ -34,7 +34,29 @@
       </header>
 
       <!-- Area Workspace Utama (Tempat Panel Input & Output Disuntikkan) -->
-      <main class="workspace" id="workspace-container"></main>
+      <main class="workspace" id="workspace-container">
+        <!-- Area Workspace Utama -->
+        <main class="workspace" id="workspace-container">
+          <!-- Panel Kiri: Input Teks Mentah -->
+          <section class="panel panel-input" aria-labelledby="input-panel-title">
+            <div class="panel-header">
+              <h2 id="input-panel-title">Teks / Log Mentah</h2>
+              <span class="char-counter" id="input-char-count">0 Karakter</span>
+            </div>
+
+            <div class="panel-body">
+              <label for="input-text" class="visually-hidden">Area Teks Input</label>
+              <textarea id="input-text" class="text-area" placeholder="Paste teks berantakan, email mentah, atau log error di sini..." spellcheck="false" autocomplete="off"></textarea>
+            </div>
+
+            <div class="panel-footer">
+              <button id="btn-clean" class="btn btn-primary" type="button"><span class="btn-icon">🧹</span> Bersihkan Format</button>
+              <button id="btn-redact" class="btn btn-warning" type="button"><span class="btn-icon">🔒</span> Redact Data Sensitif</button>
+              <button id="btn-clear" class="btn btn-ghost" type="button"><span class="btn-icon">🗑️</span> Hapus Teks</button>
+            </div>
+          </section>
+        </main>
+      </main>
     </div>
 
     <!-- Main JavaScript Logic -->

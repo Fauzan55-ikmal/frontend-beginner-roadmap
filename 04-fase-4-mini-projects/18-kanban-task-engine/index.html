@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enterprise Kanban Engine - Task Management</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Header Utama Aplikasi -->
+      <header class="app-header">
+        <div class="header-brand">
+          <h1>📋 Enterprise Kanban Engine</h1>
+          <span class="status-indicator" id="storage-status" title="Status Sinkronisasi Storage"> <span class="dot"></span> Saved </span>
+        </div>
+        <p class="header-subtitle">Interactive Task Management with Native DnD, History Buffer, & Accessibility</p>
+      </header>
+
+      <!-- Area Kerja Utama (Control Bar & Board Container akan masuk di sini) -->
+      <main class="workspace" id="workspace"></main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

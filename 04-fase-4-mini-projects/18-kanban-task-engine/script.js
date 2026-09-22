@@ -93,3 +93,103 @@ function updateHistoryButtons() {
   if (btnUndo) btnUndo.disabled = historyStack.length === 0;
   if (btnRedo) btnRedo.disabled = redoStack.length === 0;
 }
+
+// 2. DOM ELEMENTS MAPPING
+const boardContainer = document.getElementById("board-container");
+const searchInput = document.getElementById("search-input");
+const filterPriority = document.getElementById("filter-priority");
+const btnAddColumn = document.getElementById("btn-add-column");
+const btnUndo = document.getElementById("btn-undo");
+const btnRedo = document.getElementById("btn-redo");
+
+// Modal DOM Elements
+const modalTask = document.getElementById("modal-task");
+const taskForm = document.getElementById("task-form");
+const modalTitle = document.getElementById("modal-title");
+const taskIdInput = document.getElementById("task-id");
+const taskColumnIdInput = document.getElementById("task-column-id");
+const taskTitleInput = document.getElementById("task-title-input");
+const taskDescInput = document.getElementById("task-desc-input");
+const taskPriorityInput = document.getElementById("task-priority-input");
+const btnCloseModal = document.getElementById("btn-close-modal");
+const btnCancelTask = document.getElementById("btn-cancel-task");
+
+// 3. UI RENDERING ENGINE
+/**
+ * Sanitasi string teks untuk mencegah celah keamanan XSS
+ */
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g, (tag) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[tag] || tag);
+}
+
+/**
+ * Merender ulang seluruh papan Kanban berdasarkan state terkini
+ */
+function renderKanbanBoard() {
+  if (!boardContainer) return;
+  boardContainer.innerHTML = "";
+
+  state.columns.forEach((column) => {
+    // Filter tugas berdasarkan kolom aktif, prioritas, dan query pencarian teks
+    const columnTasks = state.tasks.filter((task) => {
+      const matchColumn = task.columnId === column.id;
+      const matchPriority = state.filter === "all" || task.priority === state.filter;
+      const query = state.searchQuery.toLowerCase();
+      const matchSearch = task.title.toLowerCase().includes(query) || (task.description && task.description.toLowerCase().includes(query));
+      return matchColumn && matchPriority && matchSearch;
+    });
+
+    // Buat elemen kolom
+    const columnEl = document.createElement("div");
+    columnEl.className = "kanban-column";
+    columnEl.setAttribute("data-column-id", column.id);
+
+    columnEl.innerHTML = `
+            <div class="column-header">
+                <div class="column-title-group">
+                    <h2 class="column-title">${escapeHTML(column.title)}</h2>
+                    <span class="card-count">${columnTasks.length}</span>
+                </div>
+                <div class="column-actions">
+                    <button class="btn-icon btn-add-card" title="Tambah Kartu" data-column-id="${column.id}">+</button>
+                    <button class="btn-icon btn-column-menu" title="Opsi Kolom" data-column-id="${column.id}">⋮</button>
+                </div>
+            </div>
+            <div class="cards-dropzone" data-dropzone-id="${column.id}">
+                <!-- Task Cards di-render di sini -->
+            </div>
+        `;
+
+    // Render Task Cards ke dalam zona drop kolom
+    const dropzone = columnEl.querySelector(".cards-dropzone");
+
+    columnTasks.forEach((task) => {
+      const cardEl = document.createElement("div");
+      cardEl.className = "task-card";
+      cardEl.setAttribute("draggable", "true");
+      cardEl.setAttribute("data-task-id", task.id);
+
+      cardEl.innerHTML = `
+                <div class="task-header">
+                    <span class="task-badge ${task.priority}">${task.priority.toUpperCase()}</span>
+                    <div class="task-card-actions">
+                        <button class="btn-icon btn-edit-task" title="Edit Tugas" data-task-id="${task.id}">✏️</button>
+                        <button class="btn-icon btn-delete-task" title="Hapus Tugas" data-task-id="${task.id}">🗑️</button>
+                    </div>
+                </div>
+                <h3 class="task-title">${escapeHTML(task.title)}</h3>
+                <p class="task-desc">${escapeHTML(task.description || "")}</p>
+                <div class="task-footer">
+                    <span>📅 ${task.createdAt}</span>
+                </div>
+            `;
+
+      dropzone.appendChild(cardEl);
+    });
+
+    boardContainer.appendChild(columnEl);
+  });
+
+  // Simpan otomatis ke localStorage setiap kali UI dirender ulang
+  saveStateToStorage();
+}

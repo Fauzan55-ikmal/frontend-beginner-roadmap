@@ -24,3 +24,40 @@ function updateCharacterCount(element, displayTarget) {
 inputText.addEventListener("input", () => {
   updateCharacterCount(inputText, inputCharCount);
 });
+
+// 4. CORE FORMATTER LOGIC
+/**
+ * Membersihkan format teks mentah:
+ * - Menghapus trailing spaces di setiap baris
+ * - Mengubah multiple blank lines berturut-turut menjadi maksimal 1 baris kosong
+ * - Menghapus whitespace di awal & akhir keseluruhan teks
+ * @param {string} rawText
+ * @returns {string} Teks yang sudah dibersihkan
+ */
+function cleanText(rawText) {
+  if (!rawText) return "";
+
+  return (
+    rawText
+      // Trim spasi liar di akhir tiap baris
+      .split("\n")
+      .map((line) => line.trimEnd())
+      .join("\n")
+      // Normalisasi multiple baris kosong berturut-turut (3+ \n jadi 2 \n)
+      .replace(/\n{3,}/g, "\n\n")
+      // Trim spasi di ujung awal dan akhir teks utama
+      .trim()
+  );
+}
+
+// 5. EVENT LISTENERS - FORMAT ACTIONS
+btnClean.addEventListener("click", () => {
+  const rawVal = inputText.value;
+  if (!rawVal.trim()) return;
+
+  const cleaned = cleanText(rawVal);
+  outputText.value = cleaned;
+
+  // Update counter karakter pada output
+  updateCharacterCount(outputText, outputCharCount);
+});

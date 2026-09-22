@@ -28,3 +28,101 @@ const scoreNormalAA = document.getElementById("score-normal-aa");
 const scoreLargeAA = document.getElementById("score-large-aa");
 const scoreNormalAAA = document.getElementById("score-normal-aaa");
 const scoreLargeAAA = document.getElementById("score-large-aaa");
+
+// 3. COLOR MATH HELPERS
+/**
+ * Generates a random 6-character HEX color code
+ * @returns {string} e.g. "#A3F12C"
+ */
+function getRandomHex() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+/**
+ * Converts HEX color string to RGB object
+ * @param {string} hex e.g. "#3B82F6"
+ * @returns {{r: number, g: number, b: number}}
+ */
+function hexToRgb(hex) {
+  let cleanHex = hex.replace("#", "");
+  if (cleanHex.length === 3) {
+    cleanHex = cleanHex
+      .split("")
+      .map((char) => char + char)
+      .join("");
+  }
+  const num = parseInt(cleanHex, 16);
+  return {
+    r: (num >> 16) & 255,
+    g: (num >> 8) & 255,
+    b: num & 255,
+  };
+}
+
+/**
+ * Converts RGB object to HSL object
+ * @param {number} r Red (0-255)
+ * @param {number} g Green (0-255)
+ * @param {number} b Blue (0-255)
+ * @returns {{h: number, s: number, l: number}}
+ */
+function rgbToHsl(r, g, b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h,
+    s,
+    l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0; // achromic
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+    }
+    h /= 6;
+  }
+
+  return {
+    h: Math.round(h * 360),
+    s: Math.round(s * 100),
+    l: Math.round(l * 100),
+  };
+}
+
+/**
+ * Formats HEX color to target string based on active format mode
+ * @param {string} hex e.g. "#3B82F6"
+ * @param {'hex'|'rgb'|'hsl'} format
+ * @returns {string}
+ */
+function formatColorValue(hex, format) {
+  if (format === "rgb") {
+    const { r, g, b } = hexToRgb(hex);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+  if (format === "hsl") {
+    const { r, g, b } = hexToRgb(hex);
+    const { h, s, l } = rgbToHsl(r, g, b);
+    return `hsl(${h}, ${s}%, ${l}%)`;
+  }
+  return hex.toUpperCase();
+}

@@ -396,3 +396,84 @@ if (btnAddColumn) {
     }
   });
 }
+
+// 6. SEARCH, FILTERS, HISTORY (UNDO/REDO), & APP INITIALIZATION
+
+// Event Listener untuk Real-time Search
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    state.searchQuery = e.target.value;
+    renderKanbanBoard();
+  });
+}
+
+// Event Listener untuk Priority Filter Dropdown
+if (filterPriority) {
+  filterPriority.addEventListener("change", (e) => {
+    state.filter = e.target.value;
+    renderKanbanBoard();
+  });
+}
+
+// Event Listener untuk Tombol Undo
+if (btnUndo) {
+  btnUndo.addEventListener("click", () => {
+    if (historyStack.length === 0) return;
+
+    // Simpan state saat ini ke redo stack sebelum melakukan undo
+    const currentState = {
+      columns: JSON.parse(JSON.stringify(state.columns)),
+      tasks: JSON.parse(JSON.stringify(state.tasks)),
+    };
+    redoStack.push(currentState);
+
+    // Ambil state sebelumnya dari history stack
+    const previousState = historyStack.pop();
+    state.columns = previousState.columns;
+    state.tasks = previousState.tasks;
+
+    updateHistoryButtons();
+    renderKanbanBoard();
+  });
+}
+
+// Event Listener untuk Tombol Redo
+if (btnRedo) {
+  btnRedo.addEventListener("click", () => {
+    if (redoStack.length === 0) return;
+
+    // Simpan state saat ini ke history stack sebelum melakukan redo
+    const currentState = {
+      columns: JSON.parse(JSON.stringify(state.columns)),
+      tasks: JSON.parse(JSON.stringify(state.tasks)),
+    };
+    historyStack.push(currentState);
+
+    // Ambil state berikutnya dari redo stack
+    const nextState = redoStack.pop();
+    state.columns = nextState.columns;
+    state.tasks = nextState.tasks;
+
+    updateHistoryButtons();
+    renderKanbanBoard();
+  });
+}
+
+// Global Keyboard Listener untuk Shortcut (Ctrl+Z untuk Undo, Ctrl+Y untuk Redo)
+document.addEventListener("keydown", (e) => {
+  if (e.ctrlKey && e.key.toLowerCase() === "z") {
+    e.preventDefault();
+    if (historyStack.length > 0 && btnUndo) btnUndo.click();
+  } else if (e.ctrlKey && e.key.toLowerCase() === "y") {
+    e.preventDefault();
+    if (redoStack.length > 0 && btnRedo) btnRedo.click();
+  }
+});
+
+// Inisialisasi Aplikasi saat DOM Selesai Dimuat
+document.addEventListener("DOMContentLoaded", () => {
+  loadStateFromStorage();
+  renderKanbanBoard();
+  updateHistoryButtons();
+  console.log("🚀 Enterprise Kanban Engine successfully initialized.");
+});

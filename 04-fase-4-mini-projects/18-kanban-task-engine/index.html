@@ -21,16 +21,18 @@
         <p class="header-subtitle">Interactive Task Management with Native DnD, History Buffer, & Accessibility</p>
       </header>
 
-      <!-- Area Kerja Utama -->
+      <!-- Area Kerja Utama (Control Bar & Board Container akan masuk di sini) -->
       <main class="workspace" id="workspace">
-        <!-- Control Bar (Poin 2) -->
+        <!-- Control Bar: Search, Filter, History, & Actions -->
         <section class="control-bar">
           <div class="control-left">
+            <!-- Global Search Input -->
             <div class="search-box">
               <span class="search-icon">🔍</span>
               <input type="text" id="search-input" placeholder="Cari tugas..." aria-label="Cari tugas" />
             </div>
 
+            <!-- Priority Filter Dropdown -->
             <div class="filter-group">
               <label for="filter-priority">Prioritas:</label>
               <select id="filter-priority" class="select-control">
@@ -43,11 +45,13 @@
           </div>
 
           <div class="control-right">
+            <!-- History Controls (Undo / Redo) -->
             <div class="history-actions">
               <button id="btn-undo" class="btn btn-secondary" title="Undo (Ctrl+Z)" disabled><span>↺</span> Undo</button>
               <button id="btn-redo" class="btn btn-secondary" title="Redo (Ctrl+Y)" disabled><span>↻</span> Redo</button>
             </div>
 
+            <!-- Add Column Action -->
             <button id="btn-add-column" class="btn btn-primary"><span>+</span> Tambah Kolom</button>
           </div>
         </section>

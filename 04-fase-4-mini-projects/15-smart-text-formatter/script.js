@@ -103,3 +103,41 @@ btnRedact.addEventListener("click", () => {
   // Update counter karakter pada output
   updateCharacterCount(outputText, outputCharCount);
 });
+
+// 8. EVENT LISTENERS - CLEAR & COPY ACTIONS
+
+// Action: Hapus Seluruh Teks (Input & Output)
+btnClear.addEventListener("click", () => {
+  inputText.value = "";
+  outputText.value = "";
+
+  updateCharacterCount(inputText, inputCharCount);
+  updateCharacterCount(outputText, outputCharCount);
+
+  inputText.focus();
+});
+
+// Action: Copy Hasil Teks ke Clipboard dengan Visual Feedback
+btnCopy.addEventListener("click", async () => {
+  const textToCopy = outputText.value;
+  if (!textToCopy) return;
+
+  try {
+    // Modern Clipboard API
+    await navigator.clipboard.writeText(textToCopy);
+
+    // Visual Feedback State pada Tombol Copy
+    const originalText = btnCopy.innerHTML;
+    btnCopy.innerHTML = '<span class="btn-icon">✓</span> Berhasil Di-copy!';
+    btnCopy.classList.add("btn-success");
+    btnCopy.disabled = true;
+
+    // Reset Kembali Tampilan Tombol Setelah 2 Detik
+    setTimeout(() => {
+      btnCopy.innerHTML = originalText;
+      btnCopy.disabled = false;
+    }, 2000);
+  } catch (err) {
+    console.error("Gagal menyalin teks ke clipboard:", err);
+  }
+});

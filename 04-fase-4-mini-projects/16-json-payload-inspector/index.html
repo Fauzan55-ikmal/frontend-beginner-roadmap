@@ -51,6 +51,43 @@
             <button id="btn-clear" class="btn btn-ghost" type="button"><span class="btn-icon">🗑️</span> Hapus</button>
           </div>
         </section>
+
+        <!-- Panel Kanan: Inspector Output & Validation -->
+        <section class="panel panel-output" aria-labelledby="output-panel-title">
+          <div class="panel-header">
+            <div class="header-title-group">
+              <h2 id="output-panel-title">Inspector & Output</h2>
+              <!-- Status Badge Valid / Invalid -->
+              <span id="status-badge" class="badge badge-neutral">Ready</span>
+            </div>
+            <span class="char-counter" id="output-char-count">0 Bytes</span>
+          </div>
+
+          <!-- Payload Metrics Stats Bar -->
+          <div class="metrics-bar" id="metrics-bar">
+            <div class="metric-item">
+              <span class="metric-label">Keys:</span>
+              <span class="metric-value" id="stat-keys">0</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Depth:</span>
+              <span class="metric-value" id="stat-depth">0</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Type:</span>
+              <span class="metric-value" id="stat-type">-</span>
+            </div>
+          </div>
+
+          <div class="panel-body">
+            <label for="output-json" class="visually-hidden">Area Textarea Output JSON</label>
+            <textarea id="output-json" class="text-area" readonly placeholder="Hasil JSON terformat dan pesan error validasi akan muncul di sini..." spellcheck="false"></textarea>
+          </div>
+
+          <div class="panel-footer">
+            <button id="btn-copy" class="btn btn-success" type="button"><span class="btn-icon">📋</span> Copy Hasil JSON</button>
+          </div>
+        </section>
       </main>
     </div>
 

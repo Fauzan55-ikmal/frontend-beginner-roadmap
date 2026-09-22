@@ -25,6 +25,32 @@
       <!-- Area Workspace Utama -->
       <main class="workspace" id="workspace-container">
         <!-- Panel akan disuntikkan di tahap berikutnya -->
+        <!-- Panel Kiri: Input JSON Mentah -->
+        <section class="panel panel-input" aria-labelledby="input-panel-title">
+          <div class="panel-header">
+            <h2 id="input-panel-title">JSON Mentah</h2>
+            <div class="header-controls">
+              <label for="indent-select" class="visually-hidden">Ukuran Indentasi</label>
+              <select id="indent-select" class="select-control" title="Pilih Ukuran Indentasi Spasi">
+                <option value="2">2 Spasi</option>
+                <option value="4">4 Spasi</option>
+              </select>
+              <span class="char-counter" id="input-char-count">0 Bytes</span>
+            </div>
+          </div>
+
+          <div class="panel-body">
+            <label for="input-json" class="visually-hidden">Area Textarea Input JSON</label>
+            <textarea id="input-json" class="text-area" placeholder='Paste payload JSON di sini... (Contoh: {"name": "Fauzan", "role": "Dev"})' spellcheck="false" autocomplete="off"></textarea>
+          </div>
+
+          <div class="panel-footer">
+            <button id="btn-prettify" class="btn btn-primary" type="button"><span class="btn-icon">✨</span> Prettify</button>
+            <button id="btn-minify" class="btn btn-secondary" type="button"><span class="btn-icon">⚡</span> Minify</button>
+            <button id="btn-sample" class="btn btn-ghost" type="button"><span class="btn-icon">🧪</span> Sample Data</button>
+            <button id="btn-clear" class="btn btn-ghost" type="button"><span class="btn-icon">🗑️</span> Hapus</button>
+          </div>
+        </section>
       </main>
     </div>
 

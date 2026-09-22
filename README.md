@@ -36,6 +36,10 @@ Fokus pada logika JavaScript murni, event listener, serta manipulasi elemen DOM.
 - [x] **12-age-calculator** - Kalkulator umur presisi dengan manipulasi objek Date(), validasi tanggal lahir, dan animasi hitung angka.
 - [x] **13-flash-cards** - Aplikasi kartu belajar interaktif dengan animasi rotasi 3D CSS, navigasi array data, indikator progres, dan shortcut keyboard.
 
+### 🛠️ 04. Fase 4: Micro-Tools & Mini Projects
+
+- [x] **15-smart-text-formatter** - Alat pembersih format teks/log berantakan dan penyamar data sensitif (Email, IP Address, No HP, Credit Card) berbasis Regex dengan Async Clipboard API.
+
 ---
 
 ## 💻 Tech Stack

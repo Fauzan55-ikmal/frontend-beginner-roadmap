@@ -256,3 +256,84 @@ function updateContrastCheckerUI() {
     contrastBadge.className = "badge badge-danger";
   }
 }
+
+// 6. EVENT LISTENERS & INTERACTION HANDLERS
+
+// Listener Tombol Generate
+btnGenerate.addEventListener("click", generateNewPalette);
+
+// Listener Shortcut Keyboard Spacebar
+document.addEventListener("keydown", (e) => {
+  // Abaikan jika fokus sedang berada di elemen input/select
+  if (["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement.tagName)) {
+    return;
+  }
+  if (e.code === "Space") {
+    e.preventDefault();
+    generateNewPalette();
+  }
+});
+
+// Listener Perubahan Format Warna (HEX, RGB, HSL)
+formatSelect.addEventListener("change", (e) => {
+  state.format = e.target.value;
+  renderPaletteUI();
+});
+
+// Delegasi Event Klik pada Kartu Warna (Lock & Copy)
+colorCards.forEach((card, index) => {
+  // Toggle status Lock
+  const lockBtn = card.querySelector(".btn-lock");
+  lockBtn.addEventListener("click", () => {
+    state.colors[index].locked = !state.colors[index].locked;
+    renderPaletteUI();
+  });
+
+  // Salin Kode Warna ke Clipboard
+  const copyBtn = card.querySelector(".btn-copy-card");
+  copyBtn.addEventListener("click", async () => {
+    const colorText = formatColorValue(state.colors[index].hex, state.format);
+    try {
+      await navigator.clipboard.writeText(colorText);
+      const originalIcon = copyBtn.innerHTML;
+      copyBtn.innerHTML = '<span style="font-size: 0.75rem; color: var(--color-success);">✓</span>';
+      setTimeout(() => {
+        copyBtn.innerHTML = originalIcon;
+      }, 1200);
+    } catch (err) {
+      console.error("Gagal menyalin teks:", err);
+    }
+  });
+});
+
+// Listener WCAG Contrast Checker Inputs
+inputColorBg.addEventListener("input", updateContrastCheckerUI);
+inputColorFg.addEventListener("input", updateContrastCheckerUI);
+
+// Event Listener Input Manual Kode HEX untuk Kontras
+inputTextBg.addEventListener("change", (e) => {
+  let val = e.target.value.trim();
+  if (!val.startsWith("#")) val = "#" + val;
+  if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+    inputColorBg.value = val;
+    updateContrastCheckerUI();
+  }
+});
+
+inputTextFg.addEventListener("change", (e) => {
+  let val = e.target.value.trim();
+  if (!val.startsWith("#")) val = "#" + val;
+  if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+    inputColorFg.value = val;
+    updateContrastCheckerUI();
+  }
+});
+
+// 7. INITIAL APP INITIALIZATION
+function initApp() {
+  renderPaletteUI();
+  updateContrastCheckerUI();
+}
+
+// Jalankan inisialisasi aplikasi saat DOM siap
+document.addEventListener("DOMContentLoaded", initApp);

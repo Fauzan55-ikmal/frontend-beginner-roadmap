@@ -124,3 +124,57 @@ function analyzePayload(data) {
     dataType,
   };
 }
+
+// 6. HELPER FUNCTIONS - UI STATUS & METRICS UPDATES
+/**
+ * Memperbarui status badge validasi, metrics bar, dan tampilan visual textarea output
+ * @param {'ready' | 'valid' | 'invalid'} state - Status validasi
+ * @param {string} message - Pesan status atau detail error sintaksis
+ * @param {object|null} metrics - Objek statistik dari analyzePayload()
+ */
+function updateUIStatus(state, message, metrics = null) {
+  // Reset kelas status badge & textarea
+  statusBadge.className = "badge";
+  outputJson.classList.remove("has-error");
+
+  if (state === "valid") {
+    statusBadge.classList.add("badge-success");
+    statusBadge.textContent = "Valid JSON";
+
+    if (metrics) {
+      statKeys.textContent = metrics.totalKeys.toLocaleString("id-ID");
+      statDepth.textContent = metrics.maxDepth;
+      statType.textContent = metrics.dataType;
+    }
+  } else if (state === "invalid") {
+    statusBadge.classList.add("badge-danger");
+    statusBadge.textContent = "Invalid JSON";
+    outputJson.classList.add("has-error");
+
+    resetMetrics();
+  } else {
+    // State 'ready' / default
+    statusBadge.classList.add("badge-neutral");
+    statusBadge.textContent = message || "Ready";
+
+    resetMetrics();
+  }
+}
+
+/**
+ * Mengembalikan tampilan indikator statistik ke kondisi awal (-)
+ */
+function resetMetrics() {
+  statKeys.textContent = "0";
+  statDepth.textContent = "0";
+  statType.textContent = "-";
+}
+
+// 7. EVENT LISTENER - CLEAR BUTTON
+btnClear.addEventListener("click", () => {
+  inputJson.value = "";
+  outputJson.value = "";
+  updateUIStatus("ready", "Ready");
+  updateByteCounters();
+  inputJson.focus();
+});

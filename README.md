@@ -39,6 +39,7 @@ Fokus pada logika JavaScript murni, event listener, serta manipulasi elemen DOM.
 ### 🛠️ 04. Fase 4: Micro-Tools & Mini Projects
 
 - [x] **15-smart-text-formatter** - Alat pembersih format teks/log berantakan dan penyamar data sensitif (Email, IP Address, No HP, Credit Card) berbasis Regex dengan Async Clipboard API.
+- [x] **16-json-payload-inspector** - Alat inspeksi, format (Prettify/Minify), dan validasi payload JSON berbasis try-catch error handling, Blob API byte calculator, serta analisis metrik struktur (Keys, Depth, Type) rekursif.
 
 ---
 

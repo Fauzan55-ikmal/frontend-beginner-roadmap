@@ -335,6 +335,7 @@ body {
 }
 
 .picker-wrapper input[type="color"] {
+  appearance: none;
   -webkit-appearance: none;
   border: none;
   width: 42px;

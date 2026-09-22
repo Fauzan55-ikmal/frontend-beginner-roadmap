@@ -178,3 +178,66 @@ btnClear.addEventListener("click", () => {
   updateByteCounters();
   inputJson.focus();
 });
+
+// 8. CORE FORMATTING ENGINE - PRETTIFY & MINIFY
+/**
+ * Memproses validasi, penataan format (Prettify/Minify), dan kalkulasi metrik payload
+ * @param {'prettify' | 'minify'} mode - Mode format yang dipilih
+ */
+function processJson(mode) {
+  const rawInput = inputJson.value.trim();
+
+  // Validasi Input Kosong
+  if (!rawInput) {
+    outputJson.value = "";
+    updateUIStatus("ready", "Ready");
+    updateByteCounters();
+    return;
+  }
+
+  try {
+    // Parsing String JSON
+    const parsedData = JSON.parse(rawInput);
+
+    // Opsi Indentasi dari Dropdown Control
+    const indentSize = parseInt(indentSelect.value, 10) || 2;
+
+    let formattedResult = "";
+    if (mode === "prettify") {
+      formattedResult = JSON.stringify(parsedData, null, indentSize);
+    } else if (mode === "minify") {
+      formattedResult = JSON.stringify(parsedData);
+    }
+
+    // Tampilkan Hasil di Textarea Output
+    outputJson.value = formattedResult;
+
+    // Jalankan Analisis Metrik Payload
+    const metrics = analyzePayload(parsedData);
+
+    // Update UI Status ke Valid
+    updateUIStatus("valid", "Valid JSON", metrics);
+    updateByteCounters();
+  } catch (error) {
+    // Penanganan Error Sintaksis JSON
+    outputJson.value = `Syntax Error: ${error.message}`;
+    updateUIStatus("invalid", "Invalid JSON");
+    updateByteCounters();
+  }
+}
+
+// 9. EVENT LISTENERS - PRETTIFY, MINIFY, & INDENT SELECT
+btnPrettify.addEventListener("click", () => {
+  processJson("prettify");
+});
+
+btnMinify.addEventListener("click", () => {
+  processJson("minify");
+});
+
+// Re-format otomatis jika user mengubah opsi indentasi saat output sudah ada
+indentSelect.addEventListener("change", () => {
+  if (inputJson.value.trim()) {
+    processJson("prettify");
+  }
+});

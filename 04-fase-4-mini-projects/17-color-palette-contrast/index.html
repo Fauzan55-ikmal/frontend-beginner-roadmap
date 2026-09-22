@@ -117,6 +117,69 @@
             </div>
           </article>
         </section>
+        <!-- Section WCAG Contrast Checker -->
+        <section class="contrast-checker-section">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>WCAG 2.1 Contrast Checker</h2>
+              <span class="badge badge-neutral" id="contrast-badge">Score: -</span>
+            </div>
+
+            <div class="contrast-workspace">
+              <!-- Left Side: Color Pickers -->
+              <div class="contrast-inputs">
+                <div class="input-group">
+                  <label for="color-bg">Warna Latar (Background):</label>
+                  <div class="picker-wrapper">
+                    <input type="color" id="color-bg" value="#ffffff" />
+                    <input type="text" id="hex-bg" value="#FFFFFF" class="text-input-code" />
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <label for="color-fg">Warna Teks (Foreground):</label>
+                  <div class="picker-wrapper">
+                    <input type="color" id="color-fg" value="#111827" />
+                    <input type="text" id="hex-fg" value="#111827" class="text-input-code" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Center Side: Live Preview -->
+              <div class="contrast-preview" id="contrast-preview-box" style="background-color: #ffffff; color: #111827">
+                <p class="preview-title">Contoh Judul Teks (Large Text)</p>
+                <p class="preview-body">Ini adalah paragraf contoh untuk menguji tingkat keterbacaan teks biasa (Normal Text) berdasarkan rasio kontras warna yang dipilih.</p>
+              </div>
+
+              <!-- Right Side: WCAG Scores -->
+              <div class="contrast-results">
+                <div class="ratio-display">
+                  <span class="ratio-label">Rasio Kontras</span>
+                  <span class="ratio-value" id="contrast-ratio">21.00:1</span>
+                </div>
+
+                <div class="wcag-scores">
+                  <div class="score-card" id="score-normal-aa">
+                    <span class="score-label">AA Normal Text</span>
+                    <span class="score-status status-pass">PASS</span>
+                  </div>
+                  <div class="score-card" id="score-large-aa">
+                    <span class="score-label">AA Large Text</span>
+                    <span class="score-status status-pass">PASS</span>
+                  </div>
+                  <div class="score-card" id="score-normal-aaa">
+                    <span class="score-label">AAA Normal Text</span>
+                    <span class="score-status status-pass">PASS</span>
+                  </div>
+                  <div class="score-card" id="score-large-aaa">
+                    <span class="score-label">AAA Large Text</span>
+                    <span class="score-status status-pass">PASS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
 

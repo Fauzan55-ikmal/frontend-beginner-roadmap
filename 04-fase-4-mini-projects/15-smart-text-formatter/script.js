@@ -61,3 +61,45 @@ btnClean.addEventListener("click", () => {
   // Update counter karakter pada output
   updateCharacterCount(outputText, outputCharCount);
 });
+
+// 6. DATA REDACTION LOGIC
+/**
+ * Menyamarkan data sensitif dalam teks (Email, IP Address, Phone Number, Credit Card)
+ * @param {string} rawText
+ * @returns {string} Teks yang data sensitifnya sudah disamarkan
+ */
+function redactText(rawText) {
+  if (!rawText) return "";
+
+  // Pattern Regex Standar Industri untuk Data Sensitif
+  const patterns = {
+    // Email: user@domain.com -> [REDACTED_EMAIL]
+    email: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g,
+
+    // IPv4 Address: 192.168.1.1 -> [REDACTED_IP]
+    ipAddress: /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/g,
+
+    // Nomor HP/Telepon Indonesia & Internasional (+62 / 08xx / formatted)
+    phone: /(\+62|62|0)[8][1-9][0-9]{6,10}\b/g,
+
+    // Nomor Kartu Kredit (16 digit angka dengan spasi/dash)
+    creditCard: /\b(?:\d[ -]*?){13,16}\b/g,
+  };
+
+  return rawText.replace(patterns.email, "[REDACTED_EMAIL]").replace(patterns.ipAddress, "[REDACTED_IP]").replace(patterns.phone, "[REDACTED_PHONE]").replace(patterns.creditCard, "[REDACTED_CARD]");
+}
+
+// 7. EVENT LISTENERS - REDACT ACTION
+btnRedact.addEventListener("click", () => {
+  const rawVal = inputText.value;
+  if (!rawVal.trim()) return;
+
+  // Bersihkan format terlebih dahulu, lalu samarkan data sensitif
+  const formatted = cleanText(rawVal);
+  const redacted = redactText(formatted);
+
+  outputText.value = redacted;
+
+  // Update counter karakter pada output
+  updateCharacterCount(outputText, outputCharCount);
+});

@@ -255,3 +255,227 @@ body {
   color: var(--color-text-main);
   background-color: var(--color-surface-card);
 }
+
+/* 5. WCAG CONTRAST CHECKER PANEL */
+.contrast-checker-section .panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.badge {
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-neutral {
+  background-color: var(--color-surface-card);
+  color: var(--color-text-muted);
+}
+
+.badge-success {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: var(--color-success);
+}
+
+.badge-danger {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: var(--color-danger);
+}
+
+/* Contrast Workspace Grid */
+.contrast-workspace {
+  display: grid;
+  grid-template-columns: 280px 1fr 220px;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Color Pickers Inputs */
+.contrast-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.picker-wrapper input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 42px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: transparent;
+}
+
+.picker-wrapper input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.picker-wrapper input[type="color"]::-webkit-color-swatch {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.text-input-code {
+  flex: 1;
+  background-color: var(--color-surface-card);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.text-input-code:focus {
+  border-color: var(--color-primary);
+}
+
+/* Live Preview Box */
+.contrast-preview {
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-border);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.preview-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.preview-body {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Scores & Results */
+.contrast-results {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.ratio-display {
+  text-align: center;
+  background-color: var(--color-surface-card);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ratio-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.ratio-value {
+  font-family: var(--font-code);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.wcag-scores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.score-card {
+  background-color: var(--color-surface-card);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.score-label {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.score-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.125rem 0.375rem;
+  border-radius: 3px;
+}
+
+.status-pass {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: var(--color-success);
+}
+
+.status-fail {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: var(--color-danger);
+}
+
+/* 6. RESPONSIVE BREAKPOINTS */
+@media (max-width: 900px) {
+  .palette-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contrast-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .palette-grid {
+    grid-template-columns: 1fr;
+  }
+}

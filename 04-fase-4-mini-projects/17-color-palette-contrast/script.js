@@ -169,3 +169,90 @@ function renderPaletteUI() {
     }
   });
 }
+
+// 5. WCAG CONTRAST CALCULATOR ENGINE
+/**
+ * Menghitung Relative Luminance berdasarkan standar WCAG 2.1
+ * @param {number} r (0-255)
+ * @param {number} g (0-255)
+ * @param {number} b (0-255)
+ * @returns {number}
+ */
+function getLuminance(r, g, b) {
+  const [rs, gs, bs] = [r, g, b].map((val) => {
+    const sRGB = val / 255;
+    return sRGB <= 0.03928 ? sRGB / 12.92 : Math.pow((sRGB + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+}
+
+/**
+ * Menghitung Rasio Kontras antara dua warna (1:1 hingga 21:1)
+ * @param {string} hex1
+ * @param {string} hex2
+ * @returns {number}
+ */
+function calculateContrastRatio(hex1, hex2) {
+  const rgb1 = hexToRgb(hex1);
+  const rgb2 = hexToRgb(hex2);
+
+  const lum1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+  const lum2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+
+  const brightest = Math.max(lum1, lum2);
+  const darkest = Math.min(lum1, lum2);
+
+  return (brightest + 0.05) / (darkest + 0.05);
+}
+
+/**
+ * Memperbarui UI WCAG Contrast Panel (Preview box, Rasio, & Badges)
+ */
+function updateContrastCheckerUI() {
+  const bgHex = inputColorBg.value;
+  const fgHex = inputColorFg.value;
+
+  // Sinkronkan text input
+  inputTextBg.value = bgHex.toUpperCase();
+  inputTextFg.value = fgHex.toUpperCase();
+
+  // Update Live Preview Box
+  contrastPreviewBox.style.backgroundColor = bgHex;
+  contrastPreviewBox.style.color = fgHex;
+
+  // Hitung Rasio Kontras
+  const ratio = calculateContrastRatio(bgHex, fgHex);
+  contrastRatioText.textContent = `${ratio.toFixed(2)}:1`;
+
+  // Evaluasi Standar WCAG 2.1
+  const passNormalAA = ratio >= 4.5;
+  const passLargeAA = ratio >= 3.0;
+  const passNormalAAA = ratio >= 7.0;
+  const passLargeAAA = ratio >= 4.5;
+
+  // Helper untuk update status card
+  const updateScoreCard = (el, isPass) => {
+    const statusEl = el.querySelector(".score-status");
+    if (isPass) {
+      statusEl.textContent = "PASS";
+      statusEl.className = "score-status status-pass";
+    } else {
+      statusEl.textContent = "FAIL";
+      statusEl.className = "score-status status-fail";
+    }
+  };
+
+  updateScoreCard(scoreNormalAA, passNormalAA);
+  updateScoreCard(scoreLargeAA, passLargeAA);
+  updateScoreCard(scoreNormalAAA, passNormalAAA);
+  updateScoreCard(scoreLargeAAA, passLargeAAA);
+
+  // Update Header Badge Overall
+  if (passNormalAA) {
+    contrastBadge.textContent = "WCAG Compliant (AA)";
+    contrastBadge.className = "badge badge-success";
+  } else {
+    contrastBadge.textContent = "Poor Contrast";
+    contrastBadge.className = "badge badge-danger";
+  }
+}

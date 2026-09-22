@@ -264,3 +264,135 @@ document.addEventListener("drop", (e) => {
     }
   }
 });
+
+// 5. CRUD OPERATIONS & MODAL FORM CONTROLLER
+
+/**
+ * Membuka modal form (mode create atau edit)
+ */
+function openModal(mode, columnId = null, task = null) {
+  if (!modalTask) return;
+  modalTask.classList.add("active");
+  modalTask.setAttribute("aria-hidden", "false");
+
+  if (mode === "create") {
+    modalTitle.textContent = "Tambah Tugas Baru";
+    taskIdInput.value = "";
+    taskColumnIdInput.value = columnId;
+    taskTitleInput.value = "";
+    taskDescInput.value = "";
+    taskPriorityInput.value = "medium";
+  } else if (mode === "edit" && task) {
+    modalTitle.textContent = "Edit Tugas";
+    taskIdInput.value = task.id;
+    taskColumnIdInput.value = task.columnId;
+    taskTitleInput.value = task.title;
+    taskDescInput.value = task.description || "";
+    taskPriorityInput.value = task.priority;
+  }
+  taskTitleInput.focus();
+}
+
+/**
+ * Menutup modal form dan mereset isi form
+ */
+function closeModal() {
+  if (!modalTask) return;
+  modalTask.classList.remove("active");
+  modalTask.setAttribute("aria-hidden", "true");
+  taskForm.reset();
+}
+
+// Event Listener Tombol Tutup / Batal Modal
+if (btnCloseModal) btnCloseModal.addEventListener("click", closeModal);
+if (btnCancelTask) btnCancelTask.addEventListener("click", closeModal);
+if (modalTask) {
+  modalTask.addEventListener("click", (e) => {
+    if (e.target === modalTask) closeModal();
+  });
+}
+
+// Event Listener Delegasi Klik pada Papan (Tambah, Edit, dan Hapus Kartu)
+document.addEventListener("click", (e) => {
+  // Tombol Tambah Kartu di Header Kolom
+  const addCardBtn = e.target.closest(".btn-add-card");
+  if (addCardBtn) {
+    const colId = addCardBtn.getAttribute("data-column-id");
+    openModal("create", colId);
+    return;
+  }
+
+  // Tombol Edit Kartu
+  const editCardBtn = e.target.closest(".btn-edit-task");
+  if (editCardBtn) {
+    const tId = editCardBtn.getAttribute("data-task-id");
+    const task = state.tasks.find((t) => t.id === tId);
+    if (task) openModal("edit", null, task);
+    return;
+  }
+
+  // Tombol Hapus Kartu
+  const deleteCardBtn = e.target.closest(".btn-delete-task");
+  if (deleteCardBtn) {
+    const tId = deleteCardBtn.getAttribute("data-task-id");
+    if (confirm("Apakah Anda yakin ingin menghapus tugas ini?")) {
+      recordHistory();
+      state.tasks = state.tasks.filter((t) => t.id !== tId);
+      renderKanbanBoard();
+    }
+    return;
+  }
+});
+
+// Event Submit Form (Simpan Tugas Baru atau Perbarui Tugas)
+if (taskForm) {
+  taskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const tId = taskIdInput.value;
+    const colId = taskColumnIdInput.value;
+    const title = taskTitleInput.value.trim();
+    const description = taskDescInput.value.trim();
+    const priority = taskPriorityInput.value;
+
+    if (!title) return;
+
+    recordHistory(); // Catat snapshot ke history buffer sebelum mutasi
+
+    if (tId) {
+      // Mode Edit
+      const task = state.tasks.find((t) => t.id === tId);
+      if (task) {
+        task.title = title;
+        task.description = description;
+        task.priority = priority;
+      }
+    } else {
+      // Mode Create
+      const newTask = {
+        id: "task-" + Date.now(),
+        columnId: colId,
+        title: title,
+        description: description,
+        priority: priority,
+        createdAt: new Date().toISOString().split("T")[0],
+      };
+      state.tasks.push(newTask);
+    }
+
+    closeModal();
+    renderKanbanBoard();
+  });
+}
+
+// Event Listener Tombol Tambah Kolom Kustom
+if (btnAddColumn) {
+  btnAddColumn.addEventListener("click", () => {
+    const colTitle = prompt("Masukkan nama kolom baru:");
+    if (colTitle && colTitle.trim() !== "") {
+      recordHistory();
+      const newColId = "col-" + Date.now();
+      state.columns.push({ id: newColId, title: colTitle.trim() });
+      renderKanbanBoard();
+    }
+  });
+}

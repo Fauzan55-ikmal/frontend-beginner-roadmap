@@ -193,3 +193,74 @@ function renderKanbanBoard() {
   // Simpan otomatis ke localStorage setiap kali UI dirender ulang
   saveStateToStorage();
 }
+
+// 4. NATIVE HTML5 DRAG AND DROP ENGINE
+let draggedTaskId = null;
+
+// Event ketika kartu mulai ditarik
+document.addEventListener("dragstart", (e) => {
+  const card = e.target.closest(".task-card");
+  if (card) {
+    draggedTaskId = card.getAttribute("data-task-id");
+    card.classList.add("dragging");
+    e.dataTransfer.setData("text/plain", draggedTaskId);
+    e.dataTransfer.effectAllowed = "move";
+  }
+});
+
+// Event ketika proses tarik kartu selesai
+document.addEventListener("dragend", (e) => {
+  const card = e.target.closest(".task-card");
+  if (card) {
+    card.classList.remove("dragging");
+    draggedTaskId = null;
+
+    // Bersihkan semua indikator drop zone aktif
+    document.querySelectorAll(".cards-dropzone").forEach((zone) => {
+      zone.classList.remove("drag-over");
+    });
+  }
+});
+
+// Mencegah default behavior agar elemen lain mengizinkan drop
+document.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = "move";
+});
+
+// Efek visual saat kartu masuk ke area dropzone kolom
+document.addEventListener("dragenter", (e) => {
+  const dropzone = e.target.closest(".cards-dropzone");
+  if (dropzone) {
+    dropzone.classList.add("drag-over");
+  }
+});
+
+// Menghapus efek visual saat kursor keluar dari dropzone
+document.addEventListener("dragleave", (e) => {
+  const dropzone = e.target.closest(".cards-dropzone");
+  if (dropzone && !dropzone.contains(e.relatedTarget)) {
+    dropzone.classList.remove("drag-over");
+  }
+});
+
+// Event utama saat kartu dilepaskan (dropped) ke dalam kolom tujuan
+document.addEventListener("drop", (e) => {
+  e.preventDefault();
+  const dropzone = e.target.closest(".cards-dropzone");
+  if (!dropzone) return;
+
+  dropzone.classList.remove("drag-over");
+  const targetColumnId = dropzone.getAttribute("data-dropzone-id");
+
+  if (draggedTaskId && targetColumnId) {
+    const task = state.tasks.find((t) => t.id === draggedTaskId);
+
+    // Hanya update state jika kolom tujuan berbeda dari kolom asal
+    if (task && task.columnId !== targetColumnId) {
+      recordHistory(); // Catat snapshot ke history buffer sebelum mutasi
+      task.columnId = targetColumnId;
+      renderKanbanBoard();
+    }
+  }
+});

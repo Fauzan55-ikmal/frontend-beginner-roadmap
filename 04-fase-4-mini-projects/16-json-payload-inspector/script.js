@@ -71,3 +71,56 @@ btnSample.addEventListener("click", () => {
   updateByteCounters();
   inputJson.focus();
 });
+
+// 5. CORE ANALYTICS ENGINE - PAYLOAD INSPECTOR
+/**
+ * Menganalisis struktur objek JSON untuk menghitung Total Keys, Kedalaman (Depth), dan Tipe Data Teratas
+ * @param {any} data - Data hasil dari JSON.parse()
+ * @returns {object} Objek statistik { totalKeys, maxDepth, dataType }
+ */
+function analyzePayload(data) {
+  // Determine Top-level Data Type
+  let dataType = typeof data;
+  if (data === null) {
+    dataType = "Null";
+  } else if (Array.isArray(data)) {
+    dataType = "Array";
+  } else if (dataType === "object") {
+    dataType = "Object";
+  } else {
+    dataType = dataType.charAt(0).toUpperCase() + dataType.slice(1);
+  }
+
+  let totalKeys = 0;
+  let maxDepth = 0;
+
+  /**
+   * Internal Recursive Traversal Function
+   */
+  function traverse(node, currentDepth) {
+    if (node !== null && typeof node === "object") {
+      if (currentDepth > maxDepth) {
+        maxDepth = currentDepth;
+      }
+
+      if (Array.isArray(node)) {
+        node.forEach((item) => traverse(item, currentDepth + 1));
+      } else {
+        const keys = Object.keys(node);
+        totalKeys += keys.length;
+        keys.forEach((key) => traverse(node[key], currentDepth + 1));
+      }
+    }
+  }
+
+  // Execute traversal if data is Object or Array
+  if (data !== null && typeof data === "object") {
+    traverse(data, 1);
+  }
+
+  return {
+    totalKeys,
+    maxDepth,
+    dataType,
+  };
+}

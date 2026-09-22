@@ -25,6 +25,98 @@
       <!-- Main Workspace -->
       <main class="workspace" id="workspace-container">
         <!-- Section Palette Generator & WCAG Checker akan disuntikkan di tahap berikutnya -->
+        <!-- Control Toolbar -->
+        <section class="toolbar-section">
+          <div class="toolbar-controls">
+            <button id="btn-generate" class="btn btn-primary"><span class="btn-icon">🎲</span> Generate Palet (Spacebar)</button>
+            <div class="select-group">
+              <label for="format-select">Format Warna:</label>
+              <select id="format-select" class="select-control">
+                <option value="hex">HEX (#RRGGBB)</option>
+                <option value="rgb">RGB (r, g, b)</option>
+                <option value="hsl">HSL (h, s%, l%)</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- Palette Grid Display (5 Warna) -->
+        <section class="palette-grid" id="palette-grid">
+          <!-- Kartu Warna 1 -->
+          <article class="color-card" data-index="0">
+            <div class="color-preview" style="background-color: #3b82f6">
+              <button class="btn-lock" title="Kunci Warna" aria-label="Kunci Warna">
+                <span class="lock-icon">🔓</span>
+              </button>
+            </div>
+            <div class="color-info">
+              <span class="color-code">#3B82F6</span>
+              <button class="btn-copy-card" title="Salin Kode Warna">
+                <span class="btn-icon">📋</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Kartu Warna 2 -->
+          <article class="color-card" data-index="1">
+            <div class="color-preview" style="background-color: #10b981">
+              <button class="btn-lock" title="Kunci Warna" aria-label="Kunci Warna">
+                <span class="lock-icon">🔓</span>
+              </button>
+            </div>
+            <div class="color-info">
+              <span class="color-code">#10B981</span>
+              <button class="btn-copy-card" title="Salin Kode Warna">
+                <span class="btn-icon">📋</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Kartu Warna 3 -->
+          <article class="color-card" data-index="2">
+            <div class="color-preview" style="background-color: #f59e0b">
+              <button class="btn-lock" title="Kunci Warna" aria-label="Kunci Warna">
+                <span class="lock-icon">🔓</span>
+              </button>
+            </div>
+            <div class="color-info">
+              <span class="color-code">#F59E0B</span>
+              <button class="btn-copy-card" title="Salin Kode Warna">
+                <span class="btn-icon">📋</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Kartu Warna 4 -->
+          <article class="color-card" data-index="3">
+            <div class="color-preview" style="background-color: #ef4444">
+              <button class="btn-lock" title="Kunci Warna" aria-label="Kunci Warna">
+                <span class="lock-icon">🔓</span>
+              </button>
+            </div>
+            <div class="color-info">
+              <span class="color-code">#EF4444</span>
+              <button class="btn-copy-card" title="Salin Kode Warna">
+                <span class="btn-icon">📋</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Kartu Warna 5 -->
+          <article class="color-card" data-index="4">
+            <div class="color-preview" style="background-color: #8b5cf6">
+              <button class="btn-lock" title="Kunci Warna" aria-label="Kunci Warna">
+                <span class="lock-icon">🔓</span>
+              </button>
+            </div>
+            <div class="color-info">
+              <span class="color-code">#8B5CF6</span>
+              <button class="btn-copy-card" title="Salin Kode Warna">
+                <span class="btn-icon">📋</span>
+              </button>
+            </div>
+          </article>
+        </section>
       </main>
     </div>
 

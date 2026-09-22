@@ -241,3 +241,39 @@ indentSelect.addEventListener("change", () => {
     processJson("prettify");
   }
 });
+
+// 10. ASYNC CLIPBOARD COPY ENGINE WITH UI FEEDBACK
+/**
+ * Menyalin teks hasil terformat di area output ke clipboard pengguna secara asinkron
+ */
+async function copyOutputToClipboard() {
+  const textToCopy = outputJson.value.trim();
+
+  // Abaikan jika area output kosong
+  if (!textToCopy) return;
+
+  try {
+    // Menggunakan Clipboard API modern
+    await navigator.clipboard.writeText(textToCopy);
+
+    // Simpan tampilan asli tombol copy
+    const originalText = btnCopy.innerHTML;
+
+    // Ubah tampilan tombol sementara untuk umpan balik visual (Success State)
+    btnCopy.innerHTML = '<span class="btn-icon">✅</span> Berhasil Disalin!';
+    btnCopy.style.backgroundColor = "var(--color-success-hover)";
+
+    // Kembalikan tampilan tombol ke kondisi awal setelah 2 detik
+    setTimeout(() => {
+      btnCopy.innerHTML = originalText;
+      btnCopy.style.backgroundColor = "";
+    }, 2000);
+  } catch (err) {
+    // Fallback jika hak akses clipboard ditolak browser
+    console.error("Gagal menyalin teks ke clipboard: ", err);
+    alert("Gagal menyalin teks. Silakan salin secara manual.");
+  }
+}
+
+// 11. EVENT LISTENER - COPY BUTTON
+btnCopy.addEventListener("click", copyOutputToClipboard);
